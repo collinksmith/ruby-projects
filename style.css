@@ -8,7 +8,8 @@
 form input {
 	width: 40%;
 	display: block;
-	margin: 25px auto;
+	margin: auto;
+	margin-top: 25px;
 	padding: 5px;
 }
 #navbar li {
@@ -19,7 +20,7 @@ form input {
 	padding: 5px;
 	vertical-align: middle;
 	font-family: Arial;
-	font-size: 14px;
+	font-size: 13px;
 }
 #navbar {
 	text-align: right;
@@ -32,4 +33,19 @@ a:link {
 a:hover {
 	color: #404040;
 	text-decoration: underline;
+}
+#buttons {
+	text-align: center;
+	margin-left: -30px;
+	margin-top: -5px;
+}
+#buttons li {
+	list-style-type: none;
+	display: inline-block;
+}
+.button {
+	width: 100px;
+	text-align: center;
+	margin: 16px 8px;
+	font: bold 11px Arial, sans-serif;
 }
