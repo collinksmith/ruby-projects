@@ -1,0 +1,16 @@
+#logo {
+	display: block;
+	margin: auto;
+	width: 20%;
+	height: 20%;
+}
+form input {
+	width: 40%;
+	display: block;
+	margin: 25px auto;
+	padding: 10px;
+}
+p {
+	color: red;
+	margin: auto;
+}
