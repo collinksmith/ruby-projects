@@ -27,7 +27,6 @@ def human_guesses
   game = Game.new(total_rounds)
   game.computer.select_colors
   round = 1
-  puts "FOR TESTING: SELECTED COLORS ARE #{game.computer.selected_colors}"
   game.display_board
   until round > total_rounds
     game.human.guess(round)
@@ -37,8 +36,6 @@ def human_guesses
     break if game.game_over
     round += 1
   end
-  puts "Do you want to play again? (y/n)"
-  play_game if gets.chomp.downcase == 'y'
 end
 
 def computer_guesses
@@ -46,7 +43,6 @@ def computer_guesses
   game = Game.new(total_rounds)
   game.human.select_colors
   round = 1
-  puts "FOR TESTING: SELECTED colors ARE #{game.human.selected_colors}"
   game.display_board
   until round > total_rounds
     game.computer.guess(round)
@@ -58,8 +54,6 @@ def computer_guesses
     puts "Press Enter to continue"
     gets
   end
-  puts "Do you want to play again? (y/n)"
-  play_game if gets.chomp.downcase == 'y'
 end
 def play_game
   puts "Do you want to guess or choose the secret colors? (Type 'G' or 'C')"
@@ -70,5 +64,7 @@ def play_game
   when 'C' then computer_guesses
   else puts "That's not an option. Please restart."
   end
+  puts "Do you want to play again? (y/n)"
+  play_game if gets.chomp.downcase == 'y'
 end
 play_game

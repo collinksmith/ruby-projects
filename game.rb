@@ -30,7 +30,7 @@ class Game
       puts "The guesser has gotten the answer!"
       @game_over = true
     elsif round == @rounds
-      puts "Time's up. Guesser loses."
+      puts "Time's up. Guesser loses. The secret colors were #{@chooser.selected_colors}."
       @game_over = true
     end
   end
