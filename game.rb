@@ -24,20 +24,19 @@ class Game
     end
   end
 
-  def check_status(round)
-    if @guess_log[round] == computer.selected_colors
-      puts "You win! Congratulations!"
+  def check_status(round, guesser)
+    guesser == 'human' ? @chooser = @computer : @chooser = @human
+    if @guess_log[round] == @chooser.selected_colors
+      puts "The guesser has gotten the answer!"
       @game_over = true
     elsif round == @rounds
-      puts "Time's up. You lose. =("
+      puts "Time's up. Guesser loses."
       @game_over = true
     end
   end
 
   def give_clues(round, guesser)
     guesser == 'human' ? @chooser = @computer : @chooser = @human
-    puts "TEST: Trying to clone: #{guess_log[round]}"
-    puts "Total guess log is: #{guess_log}"
     @guess = guess_log[round].clone
     @clues = ['_', '_', '_', '_']
     @correct_colors = 0

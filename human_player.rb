@@ -1,6 +1,6 @@
 class HumanPlayer
   attr_accessor :selected_colors
-  
+
   def initialize(game)
     @game = game
   end
