@@ -52453,11 +52453,18 @@ wordlist:
 - "zygote\r"
 - "zygotic\r"
 - "zymurgy\r"
-word: hematologist
-display_word: _________i__
-guesses: 4
+word: fumigant
+display_word: __m___n_
+guesses: 3
 player: !ruby/object:Player
   game: *1
-  word: hematologist
+  word: fumigant
   choice: save
 playing: true
+guessed:
+- k
+- n
+- p
+- q
+- w
+- m
