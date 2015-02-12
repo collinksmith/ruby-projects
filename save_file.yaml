@@ -52453,11 +52453,11 @@ wordlist:
 - "zygote\r"
 - "zygotic\r"
 - "zymurgy\r"
-word: devotions
-display_word: _____i___
+word: hematologist
+display_word: _________i__
 guesses: 4
 player: !ruby/object:Player
   game: *1
-  word: devotions
+  word: hematologist
   choice: save
 playing: true

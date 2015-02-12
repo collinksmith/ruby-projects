@@ -1,7 +1,7 @@
 require 'yaml'
 
 class Game
-  attr_accessor :word, :display_word, :guesses, :status, :player, :playing
+  attr_accessor :word, :display_word, :guesses, :status, :player, :playing, :command
   def initialize
     @wordlist = File.read('wordlist.txt')
     @word = select_word
@@ -61,21 +61,32 @@ class Player
     end
   end
 
-  def check_guess
+  def check_for_commands
     if @choice == 'save'
       @game.save_game
-      guess
+      @game
     elsif @choice == 'load'
-      load_game
+      @game = load_game
     elsif @choice == 'quit'
       exit
-    elsif @word =~ /#{@choice}/
-      puts "Correct!"
+    else
+      @game
+    end
+  end
+
+  def redo?
+    true if @choice == 'save' || @choice == 'load'
+  end
+
+  def check_guess
+    if @word =~ /#{@choice}/
+      puts "Correct!\n"
       positions = []
       @word.split('').each_with_index { |letter, index| positions << index if letter == @choice}        
       positions.each {|index| @game.display_word[index] = "#{@choice}"}
+    
     else
-      puts "Wrong."
+      puts "Wrong.\n"
       @game.guesses -= 1
     end
   end
@@ -86,6 +97,8 @@ def play_game
   game = new_or_load
   until game.playing == false
     game.player.guess
+    game = game.player.check_for_commands
+    redo if game.player.redo?
     game.player.check_guess
     game.check_status
     game.display
