@@ -64,14 +64,13 @@ class MicroBlogger
   end
 
   def everyones_last_tweet
-    friends = @client.friends
-
-    # There's a problem here. 'friend' is a FixNum, so calling
-    # 'status' and 'screen_name' raises an error.
+    friends = @client.friends.collect { |friend| @client.user(friend)}
+    friends.sort_by! { |friend| friend.screen_name.downcase }
     friends.each do |friend|
+      timestamp = friend.status.created_at
       last_message = friend.status.text 
-      print "#{friend.screen_name} said..."
-      print last_message
+      puts "#{friend.screen_name} said this on #{timestamp.strftime("%A, %b, %d")}"
+      puts last_message
       puts ''
     end
   end
