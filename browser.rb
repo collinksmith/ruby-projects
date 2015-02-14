@@ -1,7 +1,7 @@
 require 'socket'
 require 'json'
 
-host = 'localhost'   # The web server
+host = 'localhost'                  # The web server
 port = 2000                         # Default HTTP port
 path = '/thanks.html'               # The file we want
 
@@ -14,7 +14,6 @@ if type == 'POST'
   email = gets.chomp
   res = {:viking => {:name=>name, :email=>email} }.to_json
 end
-
 
 # This is the HTTP request we want to send to fetch a file.
 if type == 'GET'
@@ -37,5 +36,4 @@ response = socket.read             # Read complete response
 # Split response at first blank line into headers and body
 headers,body = response.split("\r\n\r\n", 2)
 print body                         # Display it
-# puts response
 socket.close
