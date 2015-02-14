@@ -6,7 +6,7 @@ port = 2000                         # Default HTTP port
 path = '/thanks.html'               # The file we want
 
 puts "Which type of request do you want to send?"
-type = gets.chomp.upcase
+type = gets.chomp.strip.upcase
 if type == 'POST'
   puts "Enter a name"
   name = gets.chomp
@@ -35,7 +35,7 @@ socket.print(request)              # Send request
 response = socket.read             # Read complete response
 
 # Split response at first blank line into headers and body
-# headers,body = response.split("\r\n\r\n", 2)
-# print body                         # Display it
-puts response
+headers,body = response.split("\r\n\r\n", 2)
+print body                         # Display it
+# puts response
 socket.close
