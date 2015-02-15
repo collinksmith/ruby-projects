@@ -41,15 +41,7 @@ class Node
   end
 
   def to_s
-    @value
-  end
-
-  def to_a
-    Array.new(self)
-  end
-
-  def empty?
-    false
+    "#{@value}"
   end
 end
 
@@ -77,47 +69,39 @@ def build_tree(array)
   tree
 end
 
-def breadth_check(value, node, queue)
-  if node.lchild
-    if value == node.lchild.value
-      queue = []
-      return [queue, node.lchild]
-    end
-    queue.push(node.lchild)
+def breadth_first_search(value, root)
+  queue = [root]
+  until queue.empty?
+    node = queue.shift
+    return node if value == node.value
+    queue.push(node.lchild) if node.lchild
+    queue.push(node.rchild) if node.rchild
   end
-  if node.rchild
-    if value == node.rchild.value
-      queue = []
-      return [queue, node.rchild]
-    end
-    queue.push(node.rchild)
-  end
-  queue
+  nil
 end
 
-def breadth_first_search(value, node)
-  queue = []
+def depth_first_search(value, root)
+  stack = [root]
+  until stack.empty?
+    node = stack.pop
+    return node if value == node.value
+    stack.push(node.lchild) if node.lchild
+    stack.push(node.rchild) if node.rchild
+  end
+  nil
+end
+
+def dfs_rec(value, node)
   return node if value == node.value
-  breadth_check(value, node, queue)
-  i = 10
-  while queue
-    if queue.is_a?(Array)
-      break if queue.empty?
-      res = breadth_check(value, queue[0], queue[1..-1])
-      queue = res[0]
-    elsif queue
-      res = breadth_check(value, queue, [])
-      queue = res[0]
-    end
-  end
-  if res
-    return res[1]
-  else
-    return nil
-  end
+  a = dfs_rec(value, node.lchild) if node.lchild
+  return a if a
+  b = dfs_rec(value, node.rchild) if node.rchild
+  return b if b
+  nil
 end
 
 t = build_tree([22, 5, 2, 19, 14, 11, 17, 30, 28, 372, 24, 78, 36])
-# t.display
-p breadth_first_search(14, t).value
 
+puts breadth_first_search(22, t)
+puts depth_first_search(36, t)
+puts dfs_rec(17, t)
