@@ -3,13 +3,11 @@ def substrings(string, dict)
   string.downcase!
   dict.each do |sub|
     sub.to_s
-    # print "#{sub}, "
     counter = 0
     string.scan(/#{sub}/) do |s|
       counter += 1
       res["#{s}"] = counter
     end
-
   end
   return res
 end
