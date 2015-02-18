@@ -3,9 +3,7 @@ def bubble_sort_by(array)
   iteration_count = 1
   while still_sorting
     still_sorting = false
-    # print "===Iteration #{iteration_count}===\n"
     array[0...array.length-iteration_count].each_index do |index|
-      # print "#{array}Comparing #{array[index]} and #{array[index+1]}\n"
       if yield(array[index], array[index+1]) < 0
         still_sorting = true
         array = array[0...index] << array[index+1] << array[index] << array[index+2..-1]
@@ -16,7 +14,6 @@ def bubble_sort_by(array)
   end
   array
 end
-
 
 def bubble_sort_by_tester
   j = 30
@@ -29,5 +26,4 @@ def bubble_sort_by_tester
         end
   puts "Result is: #{res}".rjust(j)
 end
-
 bubble_sort_by_tester
