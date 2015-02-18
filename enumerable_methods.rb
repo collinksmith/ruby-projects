@@ -187,4 +187,8 @@ def enumerable_methods_tester
 end
 
 # Run the tests if the file is run as a top-level script
-enumerable_methods_tester if $0 == __FILE__
+# enumerable_methods_tester if $0 == __FILE__
+
+a = [2,3,4]
+print a.my_inject { |t, i| "#{t} #{i} string!" }
+# puts a.inject {|t, i| t-i }
