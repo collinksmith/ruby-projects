@@ -1,2 +1,2 @@
-# bubble-sort
-Two simple ruby implementations of the bubble sort algorithm - one accepting an array and another accepting a block.
+# Bubble Sort
+Two simple ruby implementations of the bubble sort algorithm - one accepting an array and another accepting a block. Created as part of [The Odin Project](http://www.theodinproject.com/ruby-programming/advanced-building-blocks).
