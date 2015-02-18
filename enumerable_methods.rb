@@ -184,9 +184,6 @@ def enumerable_methods_tester
   puts "---With block---"
   puts "map:                  #{a.map {|e| e * 2}}"
   puts "my_map_proc_or_block: #{a.my_map_proc_or_block {|e| e * 2}}"
-  # puts "---With both---"
-  # puts "map:    #{a.map {|e| e * 2}}"
-  # puts "my_map_proc_or_block: #{a.my_map_proc_or_block(&times_two) {|e| e ** 2}}\n\n"
 end
 
 # Run the tests if the file is run as a top-level script
