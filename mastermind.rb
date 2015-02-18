@@ -56,6 +56,13 @@ def computer_guesses
   end
 end
 def play_game
+  puts "Welcome to mastermind!\n"\
+       "To select colors, type exactly 4 of R, O, Y, G, B, or P, with no commas."\
+       "Spaces and capitalization are optional.\n"\
+       "After guessing, exclamation points indicate a correct color and location, "\
+       "and question marks indicate a correct color.\n"\
+       "The position of exclamation points does not indicate which guess was in the "\
+       "correct location.\n\n"
   puts "Do you want to guess or choose the secret colors? (Type 'G' or 'C')"
   guesser = gets.chomp.upcase.strip
 
