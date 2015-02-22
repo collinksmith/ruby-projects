@@ -12,10 +12,28 @@ describe Player do
     expect(@player_o.token).to eq('O')
   end
 
-  it 'changes the token of a cell' do
-    @player_x.play(1)
-    expect(@board.cells[0][5].status).to eq('X')
+  describe 'play' do
+    context 'when column is empty' do
+      it 'changes the status of the bottom-most cell' do
+        @player_x.play(1)
+        expect(@board.cells[0][5].status).to eq('X')
+      end
+    end
+
+    context 'when column is not empty' do
+      it 'change the status of the bottom-most open cell' do
+        @board.cells[0][5].status = 'O'
+        @player_x.play(1)
+        expect(@board.cells[0][4].status).to eq('X')
+      end
+    end
+
+    context 'when column is full' do
+      it 'raises an error' do
+        0.upto(5) { |row| @board.cells[0][row].status = 'N' }
+        expect { @player_x.play(1) }.to raise_error(ArgumentError)
+      end
+    end
+
   end
-
-
 end

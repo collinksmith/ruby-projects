@@ -28,8 +28,8 @@ class Board
   def lowest_open_row(column)
     5.downto(0) do |i|
       return i if @cells[column][i].status == ' '
-      column_full = true
     end
+    false
   end
 
   def create_winning_combos
@@ -62,14 +62,20 @@ class Board
       combo.each do |column, row|
         res << @cells[column][row].status
       end
-      return "Player X wins" if res.all? { |status| status == 'X' }
-      return "Player O wins" if res.all? { |status| status == 'O' }
+      if res.all? { |status| status == 'X' }
+        @game_over = true
+        return "Player X wins" 
+      elsif res.all? { |status| status == 'O' }
+        @game_over = true
+        return "Player O wins" 
+      end
     end
 
     # Check for tie
     all_cells = [*0...@columns].map { |column| [*0...@rows].map { |row| cells[column][row] } }.flatten
-    return "Tie game" if all_cells.none? { |cell| cell.status == ' ' }
-
-    false
+    if all_cells.none? { |cell| cell.status == ' ' }
+      @game_over = true
+      return "Tie game" 
+    end
   end
 end

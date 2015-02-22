@@ -67,7 +67,7 @@ describe Board do
 
     context "when there is no winner or tie" do
       it 'returns false' do
-        expect(@board.check_status).to eq(false)
+        expect(@board.check_status).to eq(nil)
       end
     end
   end
