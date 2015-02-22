@@ -34,8 +34,8 @@ def play_game
   until board.game_over
     choose_column(player_x)
     board.check_status
-    break if board.game_over
     board.display
+    break if board.game_over
     choose_column(player_o)
     board.check_status
     board.display

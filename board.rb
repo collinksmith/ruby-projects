@@ -15,6 +15,7 @@ class Board
   end
 
   def display
+    print "  1   2   3   4   5   6   7  \n"
     # For each row, step through each column and print the cell
     # at that row and column
     [*0..@rows-1].each do |row|
