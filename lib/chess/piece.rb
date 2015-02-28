@@ -8,26 +8,31 @@ class Piece
     set_position(position)
   end
 
+  # Change the piece's position, and update the relevant cells on the board.
+  # The cell at the old position has its piece set to nil.
+  # The cell at the new position has its piece set to this piece.
   def set_position(new_position, old_position=nil)
     if old_position
       @board.cells[old_position[0]][old_position[1]].set_piece(nil)
     end
     @board.cells[new_position[0]][new_position[1]].set_piece(self)
+    @position = new_position
   end
 
+  #Check if the new position is on the board
   def off_board?(new_position)
-    #Check if the new position is on the board
     return (new_position[0].between?(0, 7) && new_position[1].between?(0, 7)) ? false : true
   end
 
+  # Check if the new position is occupied by a same-color piece
   def occupied_by_friendly?(new_position, new_cell)
-    # Check if the new position is occupied by a same-color piece
     if new_cell.piece
       return true if new_cell.piece.color == @color
     end
     return false
   end
 
+  # Check if there is a piece in the way
   def open_line?(new_position)
     new_column = new_position[0]
     old_column = @position[0]
@@ -36,14 +41,64 @@ class Piece
 
     # Check the column
     if new_column == old_column
+      # Going up the column
       if new_row > old_row
-        puts "old_column : #{old}"
-        (old_column+1).upto(new_column-1) do |row|
-          return false #unless @board.cells[new_column][row].piece == nil
-        end
-      else
-        (old_column-1).downto(new_column+1) do |row|
+        (old_row+1).upto(new_row-1) do |row|
           return false if @board.cells[new_column][row].piece
+        end
+      # Going down the column
+      else
+        (old_row-1).downto(new_row+1) do |row|
+          return false if @board.cells[new_column][row].piece
+        end
+      end
+    end
+
+    # Check the row
+    if new_row == old_row
+      # Going up the row
+      if new_column > old_column
+        (old_column+1).upto(new_column-1) do |column|
+          return false if @board.cells[column][new_row].piece
+        end
+        # Going down the row
+      else
+        (old_column-1).downto(new_column+1) do |column|
+          return false if @board.cells[column][new_row].piece
+        end
+      end
+    end
+
+    # Check the bottom left to top right diagonal
+    if (new_row - old_row) == (new_column - old_column)
+      # Going from bottom left to top right
+      if new_row > old_row
+        (old_row+1).upto(new_row-1) do |row|
+          increment = row - old_row
+          return false if @board.cells[old_column + increment][row].piece
+        end
+      # Going from top right to bottom left
+      else
+        (old_row-1).downto(new_row+1) do |row|
+          increment = row - old_row
+          return false if @board.cells[old_column + increment][row].piece
+        end
+      end
+    end
+
+    # Check the top left to bottom right diagonal
+    if (new_row + new_column) == (old_row + old_column)
+      # Going from top left to bottom right
+      if new_column > old_column
+        (old_column+1).upto(new_column-1) do |column|
+          increment = old_column - column
+          return false if @board.cells[column][old_row + increment].piece
+        end
+      # Going from bottom right to top left
+      else
+        (old_column-1).downto(new_column+1) do |column|
+          increment = old_column - column
+          return false if @board.cells[column][old_row + increment].piece
         end
       end
     end
