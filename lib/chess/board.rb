@@ -1,21 +1,27 @@
+require_relative 'cell.rb'
+
 class Board
-  attr_accessor :board
+  attr_accessor :board, :cells
 
   # Create an array with 64 elements, from [1,1] to [8,8], to
   # serve as the board.
   def initialize
-    @rows = [1,2,3,4,5,6,7,8]
-    @columns = [1,2,3,4,5,6,7,8]
-    @board = []
-    @rows.each do |r| 
-      @columns.each do |c|
-        @board << [r, c]
-      end
+    @columns = 8
+    @rows = 8
+    @cells = [*1..@columns].map { |i| []}
+    @cells.each do |column|
+      @rows.times { |i| column << Cell.new }
     end
   end
-
+  
   def display
-    print @board
-    print @board.size
+    @columns.times do |column|
+      print "#{@columns - column}"
+      @rows.times do |row|
+        print "|#{@cells[column][row]}"
+      end 
+      print "|\n"
+    end
+    print "  a b c d e f g h "
   end
 end
