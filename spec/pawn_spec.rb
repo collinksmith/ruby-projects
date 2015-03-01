@@ -45,7 +45,7 @@ describe Pawn do
         end
 
         it "cannot move two squares ahead if not on row 1" do
-          @pawn.set_position([1,2], [1,1])
+          @pawn.set_position([1,2])
           expect { @pawn.check_move([1,4]) }.to raise_error(ArgumentError)
         end
 
