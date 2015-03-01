@@ -5,15 +5,15 @@ class Piece
     @board = board
     @color = color
     @type = type
-    set_position(position)
+    set_position(position, true)
   end
 
   # Change the piece's position, and update the relevant cells on the board.
   # The cell at the old position has its piece set to nil.
   # The cell at the new position has its piece set to this piece.
-  def set_position(new_position, old_position=nil)
-    if old_position
-      @board.cells[old_position[0]][old_position[1]].set_piece(nil)
+  def set_position(new_position, init=false)
+    unless init
+      @board.cells[@position[0]][@position[1]].set_piece(nil)
     end
     @board.cells[new_position[0]][new_position[1]].set_piece(self)
     @position = new_position
