@@ -12,12 +12,11 @@ describe Piece do
     end
 
     it "sets its position on the board" do
-      # @piece.set_position('P')
       expect(@board.cells[1][1].to_s).to eq('P')
     end
   end
 
-  context "when moving" do
+  describe '.check_move' do
     it "detects if the move is off the board" do
       expect { @piece.check_move([9,9]) }.to raise_error(ArgumentError)
     end
