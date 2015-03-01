@@ -3,12 +3,11 @@ require_relative 'piece.rb'
 class Pawn < Piece
   def initialize(position, board, color)
     @type = 'P'
-    super(position, board, color, @type)
+    super(position, board, color)
   end
 
   def check_move(new_position)
     super(new_position)
-
     new_column, new_row, old_column, old_row = columns_and_rows(new_position)
 
     # Raise an error if the move is straight ahead and the spot is occupied by any piece
