@@ -32,13 +32,17 @@ class Piece
     return false
   end
 
+  def columns_and_rows(new_position)
+    new_column = new_position[0]
+    new_row = new_position[1]
+    old_column = @position[0]
+    old_row = @position[1]
+    return new_column, new_row, old_column, old_row
+  end
+
   # Check if there is a piece in the way
   def open_line?(new_position)
-    new_column = new_position[0]
-    old_column = @position[0]
-    new_row = new_position[1]
-    old_row = @position[1]
-
+    new_column, new_row, old_column, old_row = columns_and_rows(new_position)
     # Check the column
     if new_column == old_column
       # Going up the column
