@@ -1,6 +1,6 @@
 class Piece
   attr_accessor :position, :type, :color
-  def initialize(position, board, color, type)
+  def initialize(position, board, color, type='P')
     @position = position
     @board = board
     @color = color
@@ -110,6 +110,9 @@ class Piece
     return true
   end
 
+
+  # Return true if the move if allowed.
+  # Otherwise, raise an argument error.
   def check_move(new_position)
     if off_board?(new_position)
       raise ArgumentError, "That position is not on the board."
