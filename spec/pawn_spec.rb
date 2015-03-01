@@ -4,6 +4,7 @@ describe Pawn do
   before :each do
     @board = Board.new
     @pawn = Pawn.new([1,1], @board, :white)
+    @black_pawn = Pawn.new([1,7], @board, :black)
   end
 
   context "when created" do
@@ -13,6 +14,72 @@ describe Pawn do
 
     it "sets its position" do
       expect(@board.cells[1][1].to_s).to eq('P')
+    end
+  end
+
+  describe '.check_move' do
+    context "when color is white" do
+      it "detects if the square is occupied by a friendly piece" do
+        blocking_piece = Pawn.new([1,2], @board, :white,)
+        expect { @pawn.check_move([1,2]) }.to raise_error(ArgumentError)
+      end
+
+      context "when moving diagonally" do
+        it "can move if the square is occupied by an opposing piece" do
+          opposing_piece = Pawn.new([2,2], @board, :black)
+          expect(@pawn.check_move([2,2])).to eq(true)
+        end
+
+        it "can't move if the square is empty" do
+          expect {@pawn.check_move[2,2] }.to raise_error(ArgumentError)
+        end
+      end
+
+      context "when moving forward" do
+        it "can move one square ahead" do
+          expect(@pawn.check_move([1,2])).to eq(true)
+        end
+
+        it "can move two squares ahead if on row 1" do
+          expect(@pawn.check_move([1,3])).to eq(true)
+        end
+
+        it "cannot move two squares ahead if not on row 1" do
+          @pawn.set_position([1,2], [1,1])
+          expect { @pawn.check_move([1,4]) }.to raise_error(ArgumentError)
+        end
+
+        it "cannot move backward" do
+          expect { @pawn.check_move([1,0]) }.to raise_error(ArgumentError)
+        end
+
+        it "cannot capture a piece in front of it" do 
+          opposing_piece = Piece.new([1,2], @board, :black, 'P')
+          expect { @pawn.check_move([1,2]) }.to raise_error(ArgumentError)
+        end
+      end
+    end
+
+    context "when color is black" do
+      context "when moving diagonally" do
+        it "can capture opposing piece diagonally" do
+          opposing_piece = Piece.new([2,6], @board, :white, 'P')
+          expect(@black_pawn.check_move([2,6])).to eq(true)
+        end
+      end
+
+      context "when moving forward" do
+        it "can move down two spaces if on row 7" do
+          expect(@black_pawn.check_move([1,5])).to eq(true)
+        end
+
+        it "cannot capture a piece in front of it" do
+          opposing_piece = Piece.new([1,6], @board, :white, 'P')
+          expect { @black_pawn.check_move([1,6]) }.to raise_error(ArgumentError)
+        end
+
+      end
+      
     end
   end
 
