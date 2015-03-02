@@ -1,5 +1,5 @@
 class King < Piece
-  attr_accessor :attacking_pieces
+  attr_accessor :attacking_pieces, :moved
   def initialize(position, board, color, player=nil)
     @type = 'K'
     @moved = false
@@ -7,17 +7,15 @@ class King < Piece
     super(position, board, color, @type, player)
   end
 
-  # def castle(new_posiiton)
-  #   return false unless @moved == false
-  # end
+  def can_castle?(new_posiiton)
+    return false if @moved == true
 
-  # def move(new_position)
-  #   @moved = true
+  end
 
-  #   # Handle castles
-
-  #   super(new_position)
-  # end
+  def move(new_position)
+    @moved = true
+    super(new_position)
+  end
 
   def valid_moves
     valid_moves = []
