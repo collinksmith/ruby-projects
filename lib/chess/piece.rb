@@ -111,7 +111,6 @@ class Piece
     return true
   end
 
-
   # Return true if the move if allowed.
   # Otherwise, raise an error.
   def check_move(new_position)
@@ -140,5 +139,16 @@ class Piece
 
   def delete
     @player.pieces.delete(self)
+  end
+
+  def move(new_position)
+    new_column, new_row, old_column, old_row = columns_and_rows(new_position)
+    check_move(new_position)
+
+    if @board.get_piece([new_column, new_row])
+      @board.get_piece([new_column, new_row]).delete
+    end
+
+    set_position(new_position)
   end
 end
