@@ -70,4 +70,54 @@ describe Player do
 
     end
   end
+
+  describe ".castle" do
+    context "when the way is open" do
+      before :each do
+        [@white_player, @black_player].each do |player|
+          3.times {player.pieces[1].delete}
+          2.times {player.pieces[2].delete}
+        end
+      end
+
+      context "the white player" do
+        it "can castle to the king side" do
+          @white_player.castle('K')
+          expect(@white_player.king.position).to eq([6,0])
+        end
+
+        it "can castle to the queen side" do  
+          @white_player.castle('Q')
+          expect(@white_player.king.position).to eq([2,0])
+        end
+      end
+
+      context "the black player" do
+        it "can castle to the king side" do
+          @black_player.castle('K')
+          expect(@black_player.king.position).to eq([6,7])
+        end
+
+        it "can castle to the king side" do
+          @black_player.castle('Q')
+          expect(@black_player.king.position).to eq([2,7])
+        end
+      end
+    end
+
+    context "when the way is shut. It was made by those who are dead. And the dead keep it" do
+      context "the white player" do
+        it "cannot castle to either side" do
+          expect { @white_player.castle('K') }.to raise_error(ArgumentError)
+          expect { @white_player.castle('Q') }.to raise_error(ArgumentError)
+        end
+      end
+      context "the black player" do
+        it "cannot castle to either side" do
+          expect { @black_player.castle('K') }.to raise_error(ArgumentError)
+          expect { @black_player.castle('Q') }.to raise_error(ArgumentError)
+        end
+      end
+    end
+  end
 end
