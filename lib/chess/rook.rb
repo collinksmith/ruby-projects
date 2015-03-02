@@ -1,7 +1,14 @@
 class Rook < Piece
+  attr_accessor :moved
   def initialize(position, board, color, player=nil)
     @type = 'R'
+    @moved = false
     super(position, board, color, @type, player)
+  end
+
+  def move(new_position)
+    @moved = true
+    super(new_position)
   end
 
   def check_move(new_position)
