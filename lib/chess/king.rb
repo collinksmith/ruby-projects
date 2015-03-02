@@ -1,7 +1,7 @@
 class King < Piece
-  def initialize(position, board, color)
+  def initialize(position, board, color, player=nil)
     @type = 'K'
-    super(position, board, color)
+    super(position, board, color, @type, player)
   end
 
   def check_move(new_position)

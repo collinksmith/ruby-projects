@@ -1,9 +1,9 @@
 require_relative 'piece.rb'
 
 class Pawn < Piece
-  def initialize(position, board, color)
+  def initialize(position, board, color, player=nil)
     @type = 'P'
-    super(position, board, color)
+    super(position, board, color, @type, player)
   end
 
   def check_move(new_position)

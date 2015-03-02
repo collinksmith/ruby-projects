@@ -1,10 +1,11 @@
 class Piece
   attr_accessor :position, :type, :color
-  def initialize(position, board, color, type='P')
+  def initialize(position, board, color, type=nil, player=nil)
     @position = position
     @board = board
     @color = color
     @type = type
+    @player = player
     set_position(position, true)
   end
 
@@ -112,7 +113,7 @@ class Piece
 
 
   # Return true if the move if allowed.
-  # Otherwise, raise an argument error.
+  # Otherwise, raise an error.
   def check_move(new_position)
     if off_board?(new_position)
       raise ArgumentError, "That position is not on the board."
@@ -134,8 +135,10 @@ class Piece
 
     raise ArgumentError, "Your piece is already on that square." if old_cell == new_cell
 
-
     return true
   end
 
+  def delete
+    @player.pieces.delete(self)
+  end
 end
