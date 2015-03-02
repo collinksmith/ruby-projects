@@ -18,10 +18,14 @@ class Board
     @columns.times do |column|
       print "#{@columns - column}"
       @rows.times do |row|
-        print "|#{@cells[column][row]}"
+        print "|#{@cells[@columns-1 - column][row]}"
       end 
       print "|\n"
     end
     print "  a b c d e f g h "
+  end
+
+  def get_piece(position)
+    @cells[position[0]][position[1]].piece
   end
 end
