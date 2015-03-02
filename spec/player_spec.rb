@@ -90,6 +90,12 @@ describe Player do
           @white_player.castle('Q')
           expect(@white_player.king.position).to eq([2,0])
         end
+
+        it "cannot castle when the rook is gone" do
+          puts "DELETING #{@white_player.pieces[0]}"
+          @white_player.pieces[0].delete
+          expect { @white_player.castle('Q') }.to raise_error(ArgumentError)
+        end
       end
 
       context "the black player" do
