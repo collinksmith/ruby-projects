@@ -1,5 +1,5 @@
 class Player
-  attr_accessor :pieces
+  attr_accessor :pieces, :king, :color
   def initialize(board, color)
     # puts color
     if color == :white
@@ -27,7 +27,7 @@ class Player
                Pawn.new([5, 1 + pawn_adder], board, color, self),
                Pawn.new([6, 1 + pawn_adder], board, color, self),
                Pawn.new([7, 1 + pawn_adder], board, color, self),]
-
+    @king = @pieces[4]
   end
 
   # If legal, move the piece to the new position.
@@ -37,17 +37,21 @@ class Player
     new_column, new_row = new_position[0], new_position[1]
     piece = @board.get_piece([old_column, old_row])
 
-    # Check that 
+    # Check that the player has a piece on that square
     if piece == nil || piece.color != @color
       raise ArgumentError, "You don't have a piece on that square."
     end
 
-    piece.check_move(new_position)
+    piece.move(new_position)
+  end
 
-    if @board.get_piece([new_column, new_row])
-      @board.get_piece([new_column, new_row]).delete
+  def attacking?(position)
+    @pieces.each do |piece|
+      begin
+        return true if piece.check_move(position)
+      rescue
+      end
     end
-
-    piece.set_position(new_position)
+    false
   end
 end
