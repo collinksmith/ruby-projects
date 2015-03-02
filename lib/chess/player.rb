@@ -1,4 +1,6 @@
+require_relative 'helper.rb'
 class Player
+  include Helper
   attr_accessor :pieces, :king, :color
   def initialize(board, color)
     # puts color
@@ -28,6 +30,52 @@ class Player
                Pawn.new([6, 1 + pawn_adder], board, color, self),
                Pawn.new([7, 1 + pawn_adder], board, color, self),]
     @king = @pieces[4]
+    @queenside_rook = @pieces[0]
+    @kingside_rook = @pieces[7]
+  end
+
+  def get_castle_rook(side)
+    if side == 'K'
+      rook = @kingside_rook
+    elsif side == 'Q'
+      rook = @queenside_rook
+    else
+      raise ArgumentError, "Must provide K or Q for the side toward which to castle."
+    end
+    return rook
+  end
+
+  def can_castle?(side)
+    rook = get_castle_rook(side)
+    # Check if king has moved
+    return false if @king.moved
+
+    # Check if rook has moved
+    return false if rook.moved
+
+    # Check whether there are any pieces in the way
+    positions = positions_between(@king.position, rook.position)
+    positions.each do |position|
+      return false if @board.cells[position[0]][position[1]].piece
+    end
+
+    return true
+  end
+
+  def castle(side)
+    raise ArgumentError, "You are not allowed to do that castle in this situation." unless can_castle?(side)
+    rook = get_castle_rook(side)
+
+    king_column, king_row = @king.position[0], @king.position[1]
+    rook_column, rook_row = rook.position[0], rook.position[1]
+
+    if side == 'K'
+      @king.set_position([king_column+2, king_row])
+      rook.set_position([rook_column-2, rook_row])
+    else
+      @king.set_position([king_column-2, king_row])
+      rook.set_position([rook_column+3, rook_row])
+    end
   end
 
   # If legal, move the piece to the new position.
