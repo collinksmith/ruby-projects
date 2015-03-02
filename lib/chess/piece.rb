@@ -138,6 +138,7 @@ class Piece
   end
 
   def delete
+    @board.cells[@position[0]][@position[1]].set_piece(nil)
     @player.pieces.delete(self)
   end
 
