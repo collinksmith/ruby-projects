@@ -48,25 +48,29 @@ class Player
   def can_castle?(side)
     rook = get_castle_rook(side)
     # Check if the rook exists
-    return false unless @pieces.include?(rook)
+    unless @pieces.include?(rook)
+      raise ArgumentError, "You can't castle because you don't have the rook!"
+    end
 
     # Check if king has moved
-    return false if @king.moved
+    raise ArgumentError, "You can't castle because the king has moved." if @king.moved
 
     # Check if rook has moved
-    return false if rook.moved
+    raise ArgumentError, "You can't castle because the rook has moved" if rook.moved
 
     # Check whether there are any pieces in the way
     positions = positions_between(@king.position, rook.position)
     positions.each do |position|
-      return false if @board.cells[position[0]][position[1]].piece
+      if @board.cells[position[0]][position[1]].piece
+        raise ArgumentError, "You can't castle because there are pieces in the way."
+      end
     end
 
     return true
   end
 
   def castle(side)
-    raise ArgumentError, "You are not allowed to do that castle in this situation." unless can_castle?(side)
+    can_castle?(side)
     rook = get_castle_rook(side)
 
     king_column, king_row = @king.position[0], @king.position[1]
@@ -79,6 +83,7 @@ class Player
       @king.set_position([king_column-2, king_row])
       rook.set_position([rook_column+3, rook_row])
     end
+    @king.moved = true
   end
 
   # If legal, move the piece to the new position.
