@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"raise",
+				"raise_error"
+			],
+			[
+				"king",
+				"king_position"
+			],
+			[
+				"attacking",
+				"attacking_pieces"
+			],
+			[
+				"att",
+				"attacking_pieces"
+			],
+			[
+				"old",
+				"old_column"
+			],
+			[
 				"Ar",
 				"ArgumentError"
 			],
@@ -24,58 +44,42 @@
 	"buffers":
 	[
 		{
-			"file": "lib/chess/board.rb",
-			"settings":
-			{
-				"buffer_size": 562,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "lib/chess/piece.rb",
 			"settings":
 			{
-				"buffer_size": 4165,
+				"buffer_size": 4663,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "spec/piece_spec.rb",
+			"file": "lib/chess/board.rb",
 			"settings":
 			{
-				"buffer_size": 3089,
+				"buffer_size": 651,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "lib/chess/pawn.rb",
+			"file": "lib/chess.rb",
 			"settings":
 			{
-				"buffer_size": 2380,
+				"buffer_size": 1087,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "spec/pawn_spec.rb",
+			"file": "lib/chess/player.rb",
 			"settings":
 			{
-				"buffer_size": 2568,
+				"buffer_size": 3497,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "lib/chess/cell.rb",
+			"file": "spec/player_spec.rb",
 			"settings":
 			{
-				"buffer_size": 274,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "spec/cell_spec.rb",
-			"settings":
-			{
-				"buffer_size": 211,
+				"buffer_size": 3865,
 				"line_ending": "Unix"
 			}
 		}
@@ -83,9 +87,21 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 171.0,
+		"height": 375.0,
 		"selected_items":
 		[
+			[
+				"rename",
+				"ANF: Rename File"
+			],
+			[
+				"renae",
+				"ANF: Rename File"
+			],
+			[
+				"bracket gl",
+				"BracketHighlighter: Toggle Global Enable"
+			],
 			[
 				"ruby",
 				"SublimeREPL: Ruby"
@@ -97,10 +113,6 @@
 			[
 				"bracket global",
 				"BracketHighlighter: Toggle Global Enable"
-			],
-			[
-				"rename",
-				"ANF: Rename File"
 			],
 			[
 				"bracket globa",
@@ -174,21 +186,37 @@
 	],
 	"file_history":
 	[
-		"/home/collin/code/the-odin-project/chess/lib/chess/piece.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/king.rb",
+		"/home/collin/code/the-odin-project/chess/spec/king_spec.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/game.rb",
 		"/home/collin/code/the-odin-project/chess/spec/game_spec.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/rook.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/cell.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/helper.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/pawn.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess.rb",
+		"/home/collin/code/the-odin-project/chess/README.md",
+		"/home/collin/code/the-odin-project/chess/spec/pawn_spec.rb",
+		"/home/collin/code/the-odin-project/chess/spec/player_spec.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/board.rb",
+		"/home/collin/code/the-odin-project/chess/spec/spec_helper.rb",
+		"/home/collin/code/the-odin-project/chess/chess/lib/helper.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/board_helper.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/queen.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/knight.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/bishop.rb",
+		"/home/collin/code/the-odin-project/chess/chess.sublime-project",
+		"/home/collin/code/the-odin-project/chess/spec/piece_spec.rb",
+		"/home/collin/code/the-odin-project/chess/spec/queen_spec.rb",
+		"/home/collin/code/the-odin-project/chess/spec/knight_spec.rb",
+		"/home/collin/code/the-odin-project/chess/spec/bishop_spec.rb",
+		"/home/collin/code/the-odin-project/chess/spec/rook_spec.rb",
+		"/home/collin/code/the-odin-project/chess/spec/cell_spec.rb",
+		"/home/collin/code/the-odin-project/chess/lib/chess/piece.rb",
 		"/home/collin/code/the-odin-project/chess/spec/game_helper.rb",
 		"/home/collin/code/the-odin-project/chess/.git/COMMIT_EDITMSG",
-		"/home/collin/code/the-odin-project/chess/lib/chess/game.rb",
-		"/home/collin/code/the-odin-project/chess/spec/spec_helper.rb",
-		"/home/collin/code/the-odin-project/chess/lib/chess/pawn.rb",
 		"/home/collin/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/collin/code/the-odin-project/chess/lib/chess/king.rb",
-		"/home/collin/code/the-odin-project/chess/spec/cell_spec.rb",
-		"/home/collin/code/the-odin-project/chess/spec/board_spec.rb",
-		"/home/collin/code/the-odin-project/chess/lib/chess/board.rb",
-		"/home/collin/code/the-odin-project/chess/spec/king_spec.rb",
-		"/home/collin/code/the-odin-project/chess/lib/chess/bishop.rb",
-		"/home/collin/code/the-odin-project/chess/README.md"
+		"/home/collin/code/the-odin-project/chess/spec/board_spec.rb"
 	],
 	"find":
 	{
@@ -206,6 +234,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"color",
 			"set_po",
 			"@position[1]",
 			"@position[0]",
@@ -248,24 +277,24 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "lib/chess/board.rb",
+					"file": "lib/chess/piece.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 562,
+						"buffer_size": 4663,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								70,
-								70
+								4018,
+								4018
 							]
 						],
 						"settings":
@@ -273,326 +302,239 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2337.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "lib/chess/board.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								410,
+								410
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lib/chess.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1087,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								527,
+								527
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content"
-							],
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "lib/chess/piece.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4165,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								994,
-								994
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "spec/piece_spec.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3089,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								302,
-								302
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "lib/chess/pawn.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2380,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								451,
-								451
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
 							],
 							"syntax": "Packages/Ruby/Ruby.tmLanguage"
 						},
@@ -604,20 +546,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "spec/pawn_spec.rb",
+					"buffer": 3,
+					"file": "lib/chess/player.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2568,
+						"buffer_size": 3497,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1646,
-								1646
+								3459,
+								3459
 							]
 						],
 						"settings":
@@ -630,11 +572,128 @@
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1767.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "spec/player_spec.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3865,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2633,
+								2633
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
@@ -645,166 +704,21 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_tag_content"
 							],
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 346.0,
+						"translation.y": 714.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "lib/chess/cell.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 274,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								234,
-								234
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"_anf_new": "",
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "spec/cell_spec.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 211,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								201,
-								201
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -861,28 +775,112 @@
 		"selected_items":
 		[
 			[
-				"piece",
-				"lib/chess/piece.rb"
+				"kingspec",
+				"spec/king_spec.rb"
 			],
 			[
-				"pawnsp",
-				"spec/pawn_spec.rb"
+				"king",
+				"lib/chess/king.rb"
 			],
 			[
-				"pawnspec",
-				"spec/pawn_spec.rb"
+				"board",
+				"lib/chess/board.rb"
+			],
+			[
+				"cell",
+				"lib/chess/cell.rb"
+			],
+			[
+				"helper",
+				"lib/chess/helper.rb"
+			],
+			[
+				"playerspec",
+				"spec/player_spec.rb"
+			],
+			[
+				"rook",
+				"lib/chess/rook.rb"
+			],
+			[
+				"ingspec",
+				"spec/king_spec.rb"
 			],
 			[
 				"pawn",
 				"lib/chess/pawn.rb"
 			],
 			[
-				"piecespec",
-				"spec/piece_spec.rb"
+				"pawnspec",
+				"spec/pawn_spec.rb"
 			],
 			[
-				"board",
-				"lib/chess/board.rb"
+				"pawnspe",
+				"spec/pawn_spec.rb"
+			],
+			[
+				"gamespec",
+				"spec/game_spec.rb"
+			],
+			[
+				"bishop",
+				"lib/chess/bishop.rb"
+			],
+			[
+				"queen",
+				"lib/chess/queen.rb"
+			],
+			[
+				"knight",
+				"lib/chess/knight.rb"
+			],
+			[
+				"player_spec",
+				"spec/player_spec.rb"
+			],
+			[
+				"game.rb",
+				"lib/chess/game.rb"
+			],
+			[
+				"player.rb",
+				"lib/chess/player.rb"
+			],
+			[
+				"piece",
+				"lib/chess/piece.rb"
+			],
+			[
+				"quespec",
+				"spec/queen_spec.rb"
+			],
+			[
+				"knightspec",
+				"spec/knight_spec.rb"
+			],
+			[
+				"rookspec",
+				"spec/rook_spec.rb"
+			],
+			[
+				"bishopspec",
+				"spec/bishop_spec.rb"
+			],
+			[
+				"spechel",
+				"spec/spec_helper.rb"
+			],
+			[
+				"rooksp",
+				"spec/rook_spec.rb"
+			],
+			[
+				"pawnsp",
+				"spec/pawn_spec.rb"
+			],
+			[
+				"piecespec",
+				"spec/piece_spec.rb"
 			],
 			[
 				"ream",

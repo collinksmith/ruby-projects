@@ -1,4 +1,4 @@
-require_relative 'spec_helper'
+require_relative 'spec_helper.rb'
 
 describe Player do
   before :each do
@@ -92,7 +92,6 @@ describe Player do
         end
 
         it "cannot castle when the rook is gone" do
-          puts "DELETING #{@white_player.pieces[0]}"
           @white_player.pieces[0].delete
           expect { @white_player.castle('Q') }.to raise_error(ArgumentError)
         end
