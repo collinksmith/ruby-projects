@@ -1,29 +1,10 @@
 =begin
-# REMINDERS
-
-* I was unable to incorporate a check to see if a move result in a check by
-the moving player in the check_move function. This means that, when moving with
-the game logic, I will need to call game.check?, and if it returns true, raise an
-error and start the move loop over (just like I will if the check_move function
-raises an error for any reason). These should be able to go in the same begin loop.
-
-  * Note: I just realized that this should also take care of checking whether
-  somebody successfully moves out of check if they are already in check. At any
-  time, they should be unable to make a move that results in them being in check.
-
-* My plan is to call game.check?, and then if that returns true, call game.checkmate?
-
-* Don't forget that I will need to convert what a player enters (e.g. e8) into the
-appropriate cell as the computer understands it (in this example, [4,7]).
-
-* That's all I can really think of right now. I think basically all I need to do is the
-game logic in this file, implementing saving, and the unicode characters for pieces.
-
+TODO: 
+  * En passant
+  * Unicode characters
+  * Ability to save
+  * Get a piece when you get the pawn to the end
 =end
-
-# Take a position as entered by a human, and convert it
-# to something the computer understands
-
 require_relative 'chess.rb'
 require_relative 'chess/bishop.rb'
 require_relative 'chess/board.rb'
@@ -54,26 +35,39 @@ def convert_position(position)
   return [column, row-1]
 end
 
+def valid_position?(position)
+  return false unless position[0] =~ /[abcdefgh]/
+  return false unless position[1].to_i.between?(1, 8)
+  true
+end
+
 def get_move(player_color)
-  player = player_color == :white ? 'White player' : 'Black player'
-  puts "#{player}, what is your move?"
-  move = gets.chomp.split
-  move.map! { |position| position.split('') }
+  begin
+    move = gets.chomp.scan(/\w/)
+    raise ArgumentError unless move.length == 4
+    move = [move[0..1],move[2..3]]
+    raise ArgumentError unless valid_position?(move[0]) && valid_position?(move[1])
+  rescue ArgumentError
+    puts "Invalid move coordinates. Please try again."
+    retry
+  end
   move = [convert_position(move[0]), convert_position(move[1])]
   return move
 end
 
 def player_turn(game, player)
+  player_name = player.color == :white ? 'White player' : 'Black player'
+  puts "\n#{player_name}, what is your move?"
   begin
     move = get_move(player.color)
     player.move(move[0], move[1])
     if game.check?(player.color)
-      player.move(move[1], move[0])
+      game.board.cells[move[1][0]][move[1][1]].piece.set_position(move[0])
       raise ArgumentError, "That move puts you in check!"
     end
   rescue ArgumentError => e
-    print e
-    puts "Please try again."
+    print e.message
+    puts " Please try again."
     retry
   end
 end
@@ -84,9 +78,9 @@ def check_status(game, player)
   if game.check?(player.color)
     if game.checkmate?(player.color)
       game_over = true
-      puts "Checkmate. #{other_player} wins!"
+      puts "\nCheckmate. #{other_player} wins!"
     else
-      puts "Check."
+      puts "\nCheck."
     end
   end
   game_over
@@ -95,20 +89,23 @@ end
 def play_game
   game = Game.new
   game_over = false
+  game.board.display
 
   counter = 0
   until game_over
     if counter.even?
-      game.board.display
       player_turn(game, game.white_player)
+      game.board.display
       game_over = check_status(game, game.black_player)
     else
-      game.board.display
       player_turn(game, game.black_player)
+      game.board.display
       game_over = check_status(game, game.white_player)
     end
     counter += 1
   end
+  puts "Thanks for playing!"
+  exit
 end
 
 play_game
