@@ -17,5 +17,5 @@ describe ".player_turn" do
   #   it "allows a legal move" do
   #     expect(player_turn(@game.white_player))
   #   end
-  end
+  # end
 end

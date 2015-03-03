@@ -108,4 +108,4 @@ def play_game
   exit
 end
 
-play_game
+play_game if $0 == __FILE__
