@@ -17,7 +17,7 @@ class Pawn < Piece
 
     if @color == :white
       # Check if the move is diagonal
-      if ((new_column == old_column + 1) || (new_column == old_column -1)) && new_row = old_row + 1
+      if ((new_column == old_column + 1) || (new_column == old_column -1)) && (new_row == old_row + 1)
         
         # If so, can only move if the square is occupied by an opposing piece
         piece_at_new_position = @board.cells[new_column][new_row].piece
@@ -45,7 +45,7 @@ class Pawn < Piece
 
     if @color == :black
       # Check if the move is diagonal
-      if ((new_column == old_column + 1) || (new_column == old_column -1)) && new_row = old_row - 1
+      if ((new_column == old_column + 1) || (new_column == old_column -1)) && new_row == old_row - 1
         
         # If so, can only move if the square is occupied by an opposing piece
         piece_at_new_position = @board.cells[new_column][new_row].piece
@@ -65,14 +65,16 @@ class Pawn < Piece
 
       # Pawn can move forward 2 if on home row. Otherwise, can only move forward 1
       if old_row == 6
-        raise ArgumentError, "Invalid move. When on home row, pawns can only move 1 or 2 sqares ahead." unless new_row == old_row - 1 || new_row == old_row - 2
+        unless new_row == old_row - 1 || new_row == old_row - 2
+          raise ArgumentError, "Invalid move. When on home row, pawns can only move 1 or 2 sqares ahead."
+        end
       else
-        raise ArgumentError, "Invalid move. When not on home row, pawns can only move one square ahead." unless new_row == old_row - 1
+        unless new_row == old_row - 1
+          raise ArgumentError, "Invalid move. When not on home row, pawns can only move one square ahead."
+        end
       end
     end
 
-
     true
   end
-
 end
