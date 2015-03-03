@@ -1,7 +1,7 @@
 require_relative 'helper.rb'
 class Player
   include Helper
-  attr_accessor :pieces, :king, :color
+  attr_accessor :pieces, :king, :color, :queenside_rook, :kingside_rook
   def initialize(board, color)
     # puts color
     if color == :white
@@ -47,6 +47,9 @@ class Player
 
   def can_castle?(side)
     rook = get_castle_rook(side)
+    # Check if the rook exists
+    return false unless @pieces.include?(rook)
+
     # Check if king has moved
     return false if @king.moved
 
