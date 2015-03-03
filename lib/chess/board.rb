@@ -15,10 +15,11 @@ class Board
   end
   
   def display
-    @columns.times do |column|
-      print "#{@columns - column}"
-      @rows.times do |row|
-        print "|#{@cells[@columns-1 - column][row]}"
+    puts "\n"
+    (@rows-1).downto(0) do |row|
+      print row+1
+      (0).upto(@columns-1) do |column|
+        print "|#{@cells[column][row]}"
       end 
       print "|\n"
     end
