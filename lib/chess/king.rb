@@ -6,15 +6,18 @@ class King < Piece
     @attacking_pieces = []
     super(position, board, color, @type, player)
   end
-
-  def can_castle?(new_posiiton)
-    return false if @moved == true
-
-  end
-
+  
   def move(new_position)
-    @moved = true
+    # Handle castles
+    if @position[0] == 4 && new_position[0] == 6
+      @player.castle('K')
+      return true
+    elsif @position[0] == 4 && new_position[0] == 2
+      @player.castle('Q')
+      return true
+    end
     super(new_position)
+    @moved = true
   end
 
   def valid_moves
@@ -42,8 +45,6 @@ class King < Piece
     super(new_position)
     new_column, new_row, old_column, old_row = columns_and_rows(new_position)
 
-    # Handle castles
-    
     # Return true if the move is no more than one column and one row away
     # Otherwise, raise an error.
     if (new_column - old_column).abs <= 1 && (new_row - old_row).abs <= 1
