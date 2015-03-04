@@ -19,11 +19,11 @@ class Board
     (@rows-1).downto(0) do |row|
       print row+1
       (0).upto(@columns-1) do |column|
-        print "|#{@cells[column][row]}"
+        print "|#{@cells[column][row]} "
       end 
       print "|\n"
     end
-    print "  a b c d e f g h "
+    print "  a  b  c  d  e  f  g  h "
   end
 
   def get_piece(position)
