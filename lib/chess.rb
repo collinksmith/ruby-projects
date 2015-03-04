@@ -64,17 +64,11 @@ def get_move(game, player_color)
     move = gets.chomp.scan(/\w/)
 
     # Handle saves
-    if check_for_save(game, move)
-      saved = true
-    end
-
+    saved = true if check_for_save(game, move)
+      
     # Handle loads
     game_to_load = check_for_load(game, move)
-    if game_to_load
-      puts "There is a game"
-      puts game_to_load
-      play_game(game_to_load)
-    end
+    play_game(game_to_load) if game_to_load
 
     raise ArgumentError unless move.length == 4
     move = [move[0..1],move[2..3]]
@@ -92,7 +86,6 @@ def player_turn(game, player)
   puts "\n#{player_name}, what is your move?"
   begin
     move = get_move(game, player.color)
-    return false if move == false
     player.move(move[0], move[1])
     if game.check?(player.color)
       game.board.cells[move[1][0]][move[1][1]].piece.set_position(move[0])
