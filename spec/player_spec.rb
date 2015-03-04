@@ -3,8 +3,9 @@ require_relative 'spec_helper.rb'
 describe Player do
   before :each do
     @board = Board.new
-    @white_player = Player.new(@board, :white)
-    @black_player = Player.new(@board, :black)
+    @game = Game.new
+    @white_player = Player.new(@board, :white, @game)
+    @black_player = Player.new(@board, :black, @game)
   end
 
   context "when created" do
