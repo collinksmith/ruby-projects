@@ -1,9 +1,8 @@
 =begin
 TODO: 
   * En passant
-  * Unicode characters
-  * Ability to save
   * Get a piece when you get the pawn to the end
+  * Auto-draw rules for endgame
 =end
 require_relative 'chess.rb'
 require_relative 'chess/bishop.rb'
@@ -41,14 +40,47 @@ def valid_position?(position)
   true
 end
 
-def get_move(player_color)
+def check_for_save(game, input)
+  if input.join('') == 'save'
+    puts "What do you want the save name to be?"
+    name = gets.chomp
+    game.save_game(name)
+  end
+
+  false
+end
+
+def check_for_load(game, input)
+  if input.join('') == 'load'
+    puts "Which save game do you want to load?"
+    name = gets.chomp
+    return load_game(name)
+  end
+  false
+end
+
+def get_move(game, player_color)
   begin
     move = gets.chomp.scan(/\w/)
+
+    # Handle saves
+    if check_for_save(game, move)
+      saved = true
+    end
+
+    # Handle loads
+    game_to_load = check_for_load(game, move)
+    if game_to_load
+      puts "There is a game"
+      puts game_to_load
+      play_game(game_to_load)
+    end
+
     raise ArgumentError unless move.length == 4
     move = [move[0..1],move[2..3]]
     raise ArgumentError unless valid_position?(move[0]) && valid_position?(move[1])
   rescue ArgumentError
-    puts "Invalid move coordinates. Please try again."
+    puts saved == true ? "What is your move?" : "Invalid move coordinates. Please try again."
     retry
   end
   move = [convert_position(move[0]), convert_position(move[1])]
@@ -59,7 +91,8 @@ def player_turn(game, player)
   player_name = player.color == :white ? 'White player' : 'Black player'
   puts "\n#{player_name}, what is your move?"
   begin
-    move = get_move(player.color)
+    move = get_move(game, player.color)
+    return false if move == false
     player.move(move[0], move[1])
     if game.check?(player.color)
       game.board.cells[move[1][0]][move[1][1]].piece.set_position(move[0])
@@ -70,6 +103,9 @@ def player_turn(game, player)
     puts " Please try again."
     retry
   end
+
+  # Change who's turn it is
+  game.turn = player.color == :white ? :black : :white
 end
 
 def check_status(game, player)
@@ -86,26 +122,36 @@ def check_status(game, player)
   game_over
 end
 
-def play_game
-  game = Game.new
+def play_game(game)
+  game = game
   game_over = false
   game.board.display
 
-  counter = 0
   until game_over
-    if counter.even?
+    if game.turn == :white
       player_turn(game, game.white_player)
       game.board.display
       game_over = check_status(game, game.black_player)
-    else
+    elsif game.turn == :black
       player_turn(game, game.black_player)
       game.board.display
       game_over = check_status(game, game.white_player)
     end
-    counter += 1
   end
   puts "Thanks for playing!"
   exit
 end
 
-play_game if $0 == __FILE__
+def load_game(file_name)
+  if File.exist?("../saves/#{file_name}.yaml")
+    save_file = File.open("../saves/#{file_name}.yaml", 'r')
+    yaml = save_file.read
+    game = YAML::load(yaml)
+    return game
+  else
+    puts "No save file exists."
+    return false
+  end
+end
+
+play_game(Game.new) if $0 == __FILE__
