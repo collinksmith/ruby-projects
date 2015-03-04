@@ -63,6 +63,12 @@ def get_move(game, player_color)
   begin
     move = gets.chomp.scan(/\w/)
 
+    # Handle exits
+    if move.join('') == 'exit' || move.join('') == 'quit'
+      game.save_game("autosave")
+      exit
+    end
+
     # Handle saves
     saved = true if check_for_save(game, move)
       
