@@ -2,7 +2,7 @@ require_relative 'helper.rb'
 class Player
   include Helper
   attr_accessor :pieces, :king, :color, :queenside_rook, :kingside_rook
-  def initialize(board, color)
+  def initialize(board, color, game)
     # puts color
     if color == :white
       pawn_adder = 0
@@ -11,6 +11,7 @@ class Player
       pawn_adder = 5
       piece_adder = 7
     end
+    @game = game
     @color = color
     @board = board
     @pieces = [Rook.new([0,0 + piece_adder], board, color, self),
@@ -56,7 +57,7 @@ class Player
     raise ArgumentError, "You can't castle because the king has moved." if @king.moved
 
     # Check if rook has moved
-    raise ArgumentError, "You can't castle because the rook has moved" if rook.moved
+    raise ArgumentError, "You can't castle because the rook has moved." if rook.moved
 
     # Check whether there are any pieces in the way
     positions = positions_between(@king.position, rook.position)
@@ -64,6 +65,11 @@ class Player
       if @board.cells[position[0]][position[1]].piece
         raise ArgumentError, "You can't castle because there are pieces in the way."
       end
+    end
+
+    # Check whether the player is in check
+    if @game.check?(@color)
+      raise ArgumentError, "You can't castle because you are in check!"
     end
 
     return true
