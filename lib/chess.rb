@@ -46,7 +46,6 @@ def check_for_save(game, input)
     name = gets.chomp
     game.save_game(name)
   end
-
   false
 end
 
@@ -54,27 +53,28 @@ def check_for_load(game, input)
   if input.join('') == 'load'
     puts "Which save game do you want to load?"
     name = gets.chomp
-    return load_game(name)
+    file = load_game(name)
+    play_game(file)
   end
-  false
+end
+
+def check_quit(game, input)
+  if input.join('') == 'exit' || input.join('') == 'quit'
+    game.save_game("autosave")
+    exit
+  end
 end
 
 def get_move(game, player_color)
   begin
     move = gets.chomp.scan(/\w/)
 
-    # Handle exits
-    if move.join('') == 'exit' || move.join('') == 'quit'
-      game.save_game("autosave")
-      exit
-    end
-
+    # Handle quits
+    check_quit(game, move)
     # Handle saves
-    saved = true if check_for_save(game, move)
-      
+    saved = true if check_for_save(game, move)     
     # Handle loads
-    game_to_load = check_for_load(game, move)
-    play_game(game_to_load) if game_to_load
+    check_for_load(game, move)
 
     raise ArgumentError unless move.length == 4
     move = [move[0..1],move[2..3]]
