@@ -1,12 +1,14 @@
 require_relative 'helper.rb'
+require 'yaml'
 
 class Game
   include Helper
-  attr_accessor :board, :white_player, :black_player
+  attr_accessor :board, :white_player, :black_player, :turn
   def initialize
     @board = Board.new
     @white_player = Player.new(@board, :white, self)
     @black_player = Player.new(@board, :black, self)
+    @turn = :white
   end
 
   # Return true if the given player is in check.
@@ -86,5 +88,14 @@ class Game
     return avoided_check ? false : true
 
     return true
+  end
+
+  def save_game(file_name)
+    puts "Saving..."
+    yaml = YAML::dump(self)
+    save_file = File.new("../saves/#{file_name}.yaml", 'w')
+    save_file.write(yaml)
+    save_file.close
+    puts "Saved as '#{file_name}'!"
   end
 end
