@@ -5,8 +5,8 @@ class Game
   attr_accessor :board, :white_player, :black_player
   def initialize
     @board = Board.new
-    @white_player = Player.new(@board, :white)
-    @black_player = Player.new(@board, :black)
+    @white_player = Player.new(@board, :white, self)
+    @black_player = Player.new(@board, :black, self)
   end
 
   # Return true if the given player is in check.
