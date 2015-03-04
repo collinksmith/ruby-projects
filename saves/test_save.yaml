@@ -1,0 +1,478 @@
+--- &2 !ruby/object:Game
+board: &1 !ruby/object:Board
+  columns: 8
+  rows: 8
+  cells:
+  - - !ruby/object:Cell
+      piece: &3 !ruby/object:Rook
+        type: R
+        moved: false
+        position:
+        - 0
+        - 0
+        board: *1
+        color: :white
+        player: &4 !ruby/object:Player
+          game: *2
+          color: :white
+          board: *1
+          pieces:
+          - *3
+          - &13 !ruby/object:Knight
+            type: N
+            position:
+            - 1
+            - 0
+            board: *1
+            color: :white
+            player: *4
+          - &17 !ruby/object:Bishop
+            type: B
+            position:
+            - 2
+            - 0
+            board: *1
+            color: :white
+            player: *4
+          - &21 !ruby/object:Queen
+            type: Q
+            position:
+            - 3
+            - 0
+            board: *1
+            color: :white
+            player: *4
+          - &5 !ruby/object:King
+            type: K
+            moved: false
+            attacking_pieces: []
+            position:
+            - 4
+            - 0
+            board: *1
+            color: :white
+            player: *4
+          - &27 !ruby/object:Bishop
+            type: B
+            position:
+            - 5
+            - 0
+            board: *1
+            color: :white
+            player: *4
+          - &31 !ruby/object:Knight
+            type: N
+            position:
+            - 6
+            - 0
+            board: *1
+            color: :white
+            player: *4
+          - &6 !ruby/object:Rook
+            type: R
+            moved: false
+            position:
+            - 7
+            - 0
+            board: *1
+            color: :white
+            player: *4
+          - &7 !ruby/object:Pawn
+            type: P
+            position:
+            - 0
+            - 1
+            board: *1
+            color: :white
+            player: *4
+          - &14 !ruby/object:Pawn
+            type: P
+            position:
+            - 1
+            - 1
+            board: *1
+            color: :white
+            player: *4
+          - &18 !ruby/object:Pawn
+            type: P
+            position:
+            - 2
+            - 1
+            board: *1
+            color: :white
+            player: *4
+          - &22 !ruby/object:Pawn
+            type: P
+            position:
+            - 3
+            - 3
+            board: *1
+            color: :white
+            player: *4
+          - &25 !ruby/object:Pawn
+            type: P
+            position:
+            - 4
+            - 1
+            board: *1
+            color: :white
+            player: *4
+          - &28 !ruby/object:Pawn
+            type: P
+            position:
+            - 5
+            - 1
+            board: *1
+            color: :white
+            player: *4
+          - &32 !ruby/object:Pawn
+            type: P
+            position:
+            - 6
+            - 1
+            board: *1
+            color: :white
+            player: *4
+          - &35 !ruby/object:Pawn
+            type: P
+            position:
+            - 7
+            - 1
+            board: *1
+            color: :white
+            player: *4
+          king: *5
+          queenside_rook: *3
+          kingside_rook: *6
+      status: R
+    - !ruby/object:Cell
+      piece: *7
+      status: P
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: &9 !ruby/object:Pawn
+        type: P
+        position:
+        - 0
+        - 6
+        board: *1
+        color: :black
+        player: &8 !ruby/object:Player
+          game: *2
+          color: :black
+          board: *1
+          pieces:
+          - &11 !ruby/object:Rook
+            type: R
+            moved: false
+            position:
+            - 0
+            - 7
+            board: *1
+            color: :black
+            player: *8
+          - &16 !ruby/object:Knight
+            type: N
+            position:
+            - 1
+            - 7
+            board: *1
+            color: :black
+            player: *8
+          - &20 !ruby/object:Bishop
+            type: B
+            position:
+            - 2
+            - 7
+            board: *1
+            color: :black
+            player: *8
+          - &24 !ruby/object:Queen
+            type: Q
+            position:
+            - 3
+            - 7
+            board: *1
+            color: :black
+            player: *8
+          - &10 !ruby/object:King
+            type: K
+            moved: false
+            attacking_pieces: []
+            position:
+            - 4
+            - 7
+            board: *1
+            color: :black
+            player: *8
+          - &30 !ruby/object:Bishop
+            type: B
+            position:
+            - 5
+            - 7
+            board: *1
+            color: :black
+            player: *8
+          - &34 !ruby/object:Knight
+            type: N
+            position:
+            - 6
+            - 7
+            board: *1
+            color: :black
+            player: *8
+          - &12 !ruby/object:Rook
+            type: R
+            moved: false
+            position:
+            - 7
+            - 7
+            board: *1
+            color: :black
+            player: *8
+          - *9
+          - &15 !ruby/object:Pawn
+            type: P
+            position:
+            - 1
+            - 6
+            board: *1
+            color: :black
+            player: *8
+          - &19 !ruby/object:Pawn
+            type: P
+            position:
+            - 2
+            - 6
+            board: *1
+            color: :black
+            player: *8
+          - &23 !ruby/object:Pawn
+            type: P
+            position:
+            - 3
+            - 6
+            board: *1
+            color: :black
+            player: *8
+          - &26 !ruby/object:Pawn
+            type: P
+            position:
+            - 4
+            - 6
+            board: *1
+            color: :black
+            player: *8
+          - &29 !ruby/object:Pawn
+            type: P
+            position:
+            - 5
+            - 6
+            board: *1
+            color: :black
+            player: *8
+          - &33 !ruby/object:Pawn
+            type: P
+            position:
+            - 6
+            - 6
+            board: *1
+            color: :black
+            player: *8
+          - &36 !ruby/object:Pawn
+            type: P
+            position:
+            - 7
+            - 6
+            board: *1
+            color: :black
+            player: *8
+          king: *10
+          queenside_rook: *11
+          kingside_rook: *12
+      status: P
+    - !ruby/object:Cell
+      piece: *11
+      status: R
+  - - !ruby/object:Cell
+      piece: *13
+      status: N
+    - !ruby/object:Cell
+      piece: *14
+      status: P
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: *15
+      status: P
+    - !ruby/object:Cell
+      piece: *16
+      status: N
+  - - !ruby/object:Cell
+      piece: *17
+      status: B
+    - !ruby/object:Cell
+      piece: *18
+      status: P
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: *19
+      status: P
+    - !ruby/object:Cell
+      piece: *20
+      status: B
+  - - !ruby/object:Cell
+      piece: *21
+      status: Q
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: *22
+      status: P
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: *23
+      status: P
+    - !ruby/object:Cell
+      piece: *24
+      status: Q
+  - - !ruby/object:Cell
+      piece: *5
+      status: K
+    - !ruby/object:Cell
+      piece: *25
+      status: P
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: *26
+      status: P
+    - !ruby/object:Cell
+      piece: *10
+      status: K
+  - - !ruby/object:Cell
+      piece: *27
+      status: B
+    - !ruby/object:Cell
+      piece: *28
+      status: P
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: *29
+      status: P
+    - !ruby/object:Cell
+      piece: *30
+      status: B
+  - - !ruby/object:Cell
+      piece: *31
+      status: N
+    - !ruby/object:Cell
+      piece: *32
+      status: P
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: *33
+      status: P
+    - !ruby/object:Cell
+      piece: *34
+      status: N
+  - - !ruby/object:Cell
+      piece: *6
+      status: R
+    - !ruby/object:Cell
+      piece: *35
+      status: P
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: 
+      status: " "
+    - !ruby/object:Cell
+      piece: *36
+      status: P
+    - !ruby/object:Cell
+      piece: *12
+      status: R
+white_player: *4
+black_player: *8
+turn: :black
