@@ -23,5 +23,5 @@ You can exit the program by typing 'exit' or 'quit' at any time. This will save 
 
 This program should implement all rules of chess correctly with the following exceptions:
 * En passant has not been implemented. If you attempt it, it will be seen as an illegal move.
-* You will not be awarded a piece of your choice if you get a pawn to the other side of the board.
+* Pawns cannot be promoted.
 * The game does not detect or declare automatic draws (i.e. if a king is not in check but the player has no legal moves, or there are only two kings left). In this situation, there will simply be no possible move and you must exit the program manually.
