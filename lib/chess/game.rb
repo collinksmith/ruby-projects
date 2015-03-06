@@ -3,12 +3,13 @@ require 'yaml'
 
 class Game
   include Helper
-  attr_accessor :board, :white_player, :black_player, :turn
+  attr_accessor :board, :white_player, :black_player, :turn, :en_passant
   def initialize
     @board = Board.new
     @white_player = Player.new(@board, :white, self)
     @black_player = Player.new(@board, :black, self)
     @turn = :white
+    @en_passant = nil
   end
 
   # Return true if the given player is in check.
