@@ -19,9 +19,11 @@ You can save or load the game by typing 'save' or 'load' at any point. You will 
 
 You can exit the program by typing 'exit' or 'quit' at any time. This will save the game with the name 'autosave"'. There can only be one autosave at a time.
 
+## Updates
+* 3/5/15 - Added en passant functionality.
+
 ## To-Do
 
 This program should implement all rules of chess correctly with the following exceptions:
-* En passant has not been implemented. If you attempt it, it will be seen as an illegal move.
 * Pawns cannot be promoted.
 * The game does not detect or declare automatic draws (i.e. if a king is not in check but the player has no legal moves, or there are only two kings left). In this situation, there will simply be no possible move and you must exit the program manually.
