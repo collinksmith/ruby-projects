@@ -1,11 +1,12 @@
 class Piece
   attr_accessor :position, :type, :color
-  def initialize(position, board, color, type=nil, player=nil)
+  def initialize(position, board, color, type=nil, player=nil, game)
     @position = position
     @board = board
     @color = color
     @type = type
     @player = player
+    @game = game
     set_position(position, true)
   end
 
@@ -142,13 +143,17 @@ class Piece
     @player.pieces.delete(self)
   end
 
-  def move(new_position)
+  def move(new_position, pawn=false)
     new_column, new_row, old_column, old_row = columns_and_rows(new_position)
     check_move(new_position)
 
     if @board.get_piece([new_column, new_row])
       @board.get_piece([new_column, new_row]).delete
     end
+
+    # If the piece is not a pawn, reset the game's en_passant flag
+    # If it is a pawn, this will be taken care of in the Pawn class
+    @game.en_passant = nil unless pawn
 
     set_position(new_position)
   end
