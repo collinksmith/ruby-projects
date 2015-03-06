@@ -1,10 +1,10 @@
 class King < Piece
   attr_accessor :attacking_pieces, :moved
-  def initialize(position, board, color, player=nil)
+  def initialize(position, board, color, player=nil, game)
     @type = 'K'
     @moved = false
     @attacking_pieces = []
-    super(position, board, color, @type, player)
+    super(position, board, color, @type, player, game)
   end
   
   def move(new_position)

@@ -14,22 +14,22 @@ class Player
     @game = game
     @color = color
     @board = board
-    @pieces = [Rook.new([0,0 + piece_adder], board, color, self),
-               Knight.new([1, 0 + piece_adder], board, color, self),
-               Bishop.new([2, 0 + piece_adder], board, color, self),
-               Queen.new([3, 0 + piece_adder], board, color, self),
-               King.new([4, 0 + piece_adder], board, color, self),
-               Bishop.new([5, 0 + piece_adder], board, color, self),
-               Knight.new([6, 0 + piece_adder], board, color, self),
-               Rook.new([7, 0 + piece_adder], board, color, self),
-               Pawn.new([0, 1 + pawn_adder], board, color, self),
-               Pawn.new([1, 1 + pawn_adder], board, color, self),
-               Pawn.new([2, 1 + pawn_adder], board, color, self),
-               Pawn.new([3, 1 + pawn_adder], board, color, self),
-               Pawn.new([4, 1 + pawn_adder], board, color, self),
-               Pawn.new([5, 1 + pawn_adder], board, color, self),
-               Pawn.new([6, 1 + pawn_adder], board, color, self),
-               Pawn.new([7, 1 + pawn_adder], board, color, self),]
+    @pieces = [Rook.new([0,0 + piece_adder], board, color, self, game),
+               Knight.new([1, 0 + piece_adder], board, color, self, game),
+               Bishop.new([2, 0 + piece_adder], board, color, self, game),
+               Queen.new([3, 0 + piece_adder], board, color, self, game),
+               King.new([4, 0 + piece_adder], board, color, self, game),
+               Bishop.new([5, 0 + piece_adder], board, color, self, game),
+               Knight.new([6, 0 + piece_adder], board, color, self, game),
+               Rook.new([7, 0 + piece_adder], board, color, self, game),
+               Pawn.new([0, 1 + pawn_adder], board, color, self, game),
+               Pawn.new([1, 1 + pawn_adder], board, color, self, game),
+               Pawn.new([2, 1 + pawn_adder], board, color, self, game),
+               Pawn.new([3, 1 + pawn_adder], board, color, self, game),
+               Pawn.new([4, 1 + pawn_adder], board, color, self, game),
+               Pawn.new([5, 1 + pawn_adder], board, color, self, game),
+               Pawn.new([6, 1 + pawn_adder], board, color, self, game),
+               Pawn.new([7, 1 + pawn_adder], board, color, self, game)]
     @king = @pieces[4]
     @queenside_rook = @pieces[0]
     @kingside_rook = @pieces[7]

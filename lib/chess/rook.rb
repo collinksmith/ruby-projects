@@ -1,9 +1,9 @@
 class Rook < Piece
   attr_accessor :moved
-  def initialize(position, board, color, player=nil)
+  def initialize(position, board, color, player=nil, game)
     @type = 'R'
     @moved = false
-    super(position, board, color, @type, player)
+    super(position, board, color, @type, player, game)
   end
 
   def move(new_position)

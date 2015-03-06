@@ -1,7 +1,7 @@
 class Queen < Piece
-  def initialize(position, board, color, player=nil)
+  def initialize(position, board, color, player=nil, game)
     @type = 'Q'
-    super(position, board, color, @type, player)
+    super(position, board, color, @type, player, game)
   end
 
   def check_move(new_position)
