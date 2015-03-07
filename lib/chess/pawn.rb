@@ -131,5 +131,48 @@ class Pawn < Piece
     else
       @game.en_passant = nil
     end
+
+    # If the pawn has gotten to the other edge, promote it
+    if @color == :white && @position[1] == 7
+      promote(new_position)
+    elsif @color == :black && @position[1] == 0
+      promote(new_position)
+    end
+  end
+
+  def promote(position)
+    @board.display
+    new_piece = get_promotion_selection
+    self.delete
+    @player.pieces.push(new_piece)
+    new_piece.set_position(position, true)
+  end
+
+  def get_promotion_selection
+    puts "\nWhich piece do you want? (Choose 'Q', 'N', 'B', or 'R')"
+    begin
+      selection = gets.chomp.strip.upcase
+      unless selection =~ /[QNBR]/
+        raise ArgumentError, "Invalid selection. Please choose again ('Q', 'N', 'B', or 'R')"
+      end
+    rescue ArgumentError => e
+      puts e.message
+      retry
+    end
+    convert_promotion_selection(selection)
+  end
+
+  def convert_promotion_selection(selection)
+    case selection
+    when 'Q'
+      new_piece = Queen.new(position, @board, @color, @player, @game)
+    when 'R'
+      new_piece = Rook.new(position, @board, @color, @player, @game)
+     when 'B'
+      new_piece = Bishop.new(position, @board, @color, @player, @game)
+    when 'N'
+      new_piece = Knight.new(position, @board, @color, @player, @game)
+    end
+    new_piece
   end
 end
