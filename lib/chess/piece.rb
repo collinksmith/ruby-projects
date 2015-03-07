@@ -148,7 +148,7 @@ class Piece
     check_move(new_position)
 
     if @board.get_piece([new_column, new_row])
-      @board.get_piece([new_column, new_row]).delete
+      @board.get_piece([new_column, new_row]).delete unless caller.to_s =~ /checkmate\?/
     end
 
     # If the piece is not a pawn, reset the game's en_passant flag
