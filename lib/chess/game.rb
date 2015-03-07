@@ -56,15 +56,11 @@ class Game
       attacking_pieces.each do |attacking_piece|
         positions = positions_between(player.king.position, attacking_piece.position)
         positions << attacking_piece.position
-        # puts "positions between are #{positions}"
         positions.each do |position|
           player.pieces.each do |piece|
             next if piece == player.king
-            # puts "checking #{position}"
             begin
               if piece.check_move(position)
-                # puts "Not checkmate because a piece can move in the way"
-                # puts "Piece that can move is #{piece.type} at #{piece.position}"
                 return false 
               end
             rescue

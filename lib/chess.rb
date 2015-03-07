@@ -1,7 +1,5 @@
 =begin
 TODO: 
-  * En passant
-  * Get a piece when you get the pawn to the end
   * Auto-draw rules for endgame
 =end
 require_relative 'chess.rb'
