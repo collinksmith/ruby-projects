@@ -87,6 +87,25 @@ class Game
     return true
   end
 
+  # Check if the game is in stalemate and return true if it is.
+  def stalemate?(color)
+    player = color == :white ? @white_player : @black_player
+
+    # Step through every piece and check if it has a legal move
+    player.pieces.each do |piece|
+      # Check every possible cell
+      0.upto(7) do |column|
+        0.upto(7) do |row|
+          begin
+            return false if piece.check_move([column, row]) == true
+          rescue
+          end
+        end
+      end
+    end
+    true
+  end
+
   def save_game(file_name)
     puts "Saving..."
     yaml = YAML::dump(self)

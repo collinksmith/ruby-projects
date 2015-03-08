@@ -106,15 +106,21 @@ def player_turn(game, player)
 end
 
 def check_status(game, player)
-  other_player = player.color == :black ? 'White player' : "Black player"
+  pretty_other_player_color = player.color == :black ? 'White player' : "Black player"
+  pretty_player_color = player.color == :black ? 'Black player' : "White player"
   game_over = false
   if game.check?(player.color)
     if game.checkmate?(player.color)
       game_over = true
-      puts "\nCheckmate. #{other_player} wins!"
+      puts "\nCheckmate. #{pretty_other_player_color} wins!"
     else
       puts "\nCheck."
     end
+  end
+
+  if game.stalemate?(player.color)
+    game_over = true
+    puts "\n #{pretty_player_color} has no legal moves! The game ends in stalemate."
   end
   game_over
 end
