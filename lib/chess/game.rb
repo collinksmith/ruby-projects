@@ -81,21 +81,18 @@ class Game
     # Check if the king can move out of check
     avoided_check = false
     valid_moves = player.king.valid_moves
-    game_state = get_game_state
+    game_state = Marshal.dump(self)
     valid_moves.each do |position|
+      # Set up variables for the test game
       test_game = Marshal::load(game_state)
       test_player = color == :white ? test_game.white_player : test_game.black_player
       test_king_position = test_player.king.position
 
       test_player.move(test_king_position, position)
-      still_in_check = test_game.check?(color)
-      unless still_in_check == true
-        avoided_check = true
-      end
+      avoided_check = true unless test_game.check?(color)
     end
-    return avoided_check ? false : true
 
-    return true
+    return avoided_check ? false : true
   end
 
   # Check if the game is in stalemate and return true if it is.
@@ -103,7 +100,7 @@ class Game
     player = color == :white ? white_player : black_player
 
     # Step through every piece and check if it has a legal move
-    game_state = get_game_state
+    game_state = Marshal.dump(self)
     player.pieces.each do |piece|
       piece_index = player.pieces.index(piece)
       # Check every possible cell
@@ -113,9 +110,7 @@ class Game
           test_piece = color == :white ? test_game.white_player.pieces[piece_index] : test_game.black_player.pieces[piece_index]
           begin
             if test_piece.check_move([column, row]) == true
-              # puts "Moving #{player.color}'s #{piece} to #{[column,row]}"
               test_piece.move([column, row])
-              # puts "Testing whether #{player.color} is in check in #{test_game}"
               return false unless test_game.check?(player.color)
             end
           rescue
@@ -124,10 +119,6 @@ class Game
       end
     end
     true
-  end
-
-  def get_game_state
-    Marshal.dump(self)
   end
 
   def save_game(file_name)
