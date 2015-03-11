@@ -22,8 +22,8 @@ You can exit the program by typing 'exit' or 'quit' at any time. This will save 
 ## Updates
 * 3/5/15 - Added en passant.
 * 3/6/15 - Added promotion for pawns.
+* 3/10/15 - Added stalemate detection.
 
 ## To-Do
 
-This program should implement all rules of chess correctly with the following exceptions:
-* The game does not detect or declare automatic draws (i.e. if a king is not in check but the player has no legal moves, or there are only two kings left). In this situation, there will simply be no possible move and you must exit the program manually.
+This program should implement all rules of chess correctly, but it doesn't keep track of moves without a taken piece. After 50 moves without a piece taken, either player should have the option to claim a draw. In this case, the program will not prompt the player with that option or give the player an opportunity to end game.
