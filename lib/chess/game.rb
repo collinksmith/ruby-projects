@@ -1,11 +1,3 @@
-=begin
-Note: There is a problem with both checkmate? and stalemate? because for both, I need to move a piece and then check if the game would be in checkmate afterward. If not, then the functions return false. The problem is that, if I then revert to the old position by simply moving the piece back, it won't work properly if there had been an opposing piece on the sqare of the test move. That piece would be gone.
- 
-One idea to get around this is to save the game before the test moves, and if necessary, revert by loading that save, rather than trying to manually
-
-UPDATE: Actually, I think I should be able to simply make a copy of the 'game' object that's passed the method and call it test_game. Then, test out the moves on test_game and call test_game.check? to see if they would result in a check. If not, I can simply exit the method and the original game will be unchanged an ready to be used by the program.
-=end
-
 require_relative 'helper.rb'
 require 'yaml'
 
