@@ -120,7 +120,7 @@ def check_status(game, player)
 
   if game.stalemate?(player.color)
     game_over = true
-    puts "\n #{pretty_player_color} has no legal moves! The game ends in stalemate."
+    puts "\n#{pretty_player_color} has no legal moves! The game ends in stalemate."
   end
   game_over
 end
