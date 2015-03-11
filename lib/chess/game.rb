@@ -48,12 +48,13 @@ class Game
   # Return true if the player of the given color is in checkmate.
   def checkmate?(color)
     return false unless check?(color)
+
     if color == :white
-      player = @white_player
-      other_player = @black_player
+      player = white_player
+      other_player = black_player
     else
-      player = @black_player
-      other_player = @white_player
+      player = black_player
+      other_player = white_player
     end
     attacking_pieces = player.king.attacking_pieces
     king_position = player.king.position
@@ -80,14 +81,16 @@ class Game
     # Check if the king can move out of check
     avoided_check = false
     valid_moves = player.king.valid_moves
+    game_state = get_game_state
     valid_moves.each do |position|
-      player.move(king_position, position)
-      still_in_check = check?(color)
-      if still_in_check == true
-        player.move(position, king_position)
-      else
+      test_game = Marshal::load(game_state)
+      test_player = color == :white ? test_game.white_player : test_game.black_player
+      test_king_position = test_player.king.position
+
+      test_player.move(test_king_position, position)
+      still_in_check = test_game.check?(color)
+      unless still_in_check == true
         avoided_check = true
-        player.move(position, king_position)
       end
     end
     return avoided_check ? false : true
@@ -97,21 +100,34 @@ class Game
 
   # Check if the game is in stalemate and return true if it is.
   def stalemate?(color)
-    player = color == :white ? @white_player : @black_player
+    player = color == :white ? white_player : black_player
 
     # Step through every piece and check if it has a legal move
+    game_state = get_game_state
     player.pieces.each do |piece|
+      piece_index = player.pieces.index(piece)
       # Check every possible cell
       0.upto(7) do |column|
         0.upto(7) do |row|
+          test_game = Marshal::load(game_state)
+          test_piece = color == :white ? test_game.white_player.pieces[piece_index] : test_game.black_player.pieces[piece_index]
           begin
-            return false if piece.check_move([column, row]) == true
+            if test_piece.check_move([column, row]) == true
+              # puts "Moving #{player.color}'s #{piece} to #{[column,row]}"
+              test_piece.move([column, row])
+              # puts "Testing whether #{player.color} is in check in #{test_game}"
+              return false unless test_game.check?(player.color)
+            end
           rescue
           end
         end
       end
     end
     true
+  end
+
+  def get_game_state
+    Marshal.dump(self)
   end
 
   def save_game(file_name)
