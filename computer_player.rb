@@ -20,7 +20,7 @@ class ComputerPlayer
   end
 
   def handle_input(location, value)
-    @grid[location[0]][location[1]] = value
+    self[*location] = value
     @guessed_spots << location
   end
 
@@ -55,8 +55,6 @@ class ComputerPlayer
     if known_match_value
       guess = index(known_match_value).first
     else
-      # options = @available_spots - @guessed_spots
-      # guess = options.sample
       guess = (@available_spots - @guessed_spots).sample
     end
     @guessed_pos = guess
@@ -64,7 +62,11 @@ class ComputerPlayer
   end
 
   def second_guess
-    guessed_value = @grid[@guessed_pos[0]][@guessed_pos[1]]
+    guessed_value = self[*@guessed_pos]
+
+    # Find out if there is another of the same value in memory.
+    # If so, get the indices of those values and guess the 
+    # one that was not guessed in the previous turn.
     if @grid.flatten.select { |value| value == guessed_value }.count == 2
       guess = index(guessed_value).select { |index| index != @guessed_pos }.flatten
       @guessed_pos = nil
@@ -75,6 +77,8 @@ class ComputerPlayer
     guess
   end
 
+  # Check for known matches in grid that have not already been matched.
+  # If you find one, return the value. If not, return nil.
   def check_for_matches
     values = @grid.flatten
     values.each_with_index do |value, i|
@@ -90,7 +94,7 @@ class ComputerPlayer
     positions = []
     @grid.each_with_index do |row,row_i|
       row.each_with_index do |col,col_i|
-        positions << [row_i, col_i] if @grid[row_i][col_i] == value
+        positions << [row_i, col_i] if self[row_i, col_i] == value
       end
     end
     positions
