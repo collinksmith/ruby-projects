@@ -4,7 +4,10 @@ class HumanPlayer
     gets.chomp.split(",").map { |n| n.to_i  - 1}
   end
 
-  def handle_match(match1, match2)
+  def handle_match(pos1, pos2, value)
     puts "Correct!"
+  end
+
+  def handle_input(location, value)
   end
 end

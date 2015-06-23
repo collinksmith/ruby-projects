@@ -1,3 +1,5 @@
+require './card.rb'
+
 class Board
   def initialize(size)
     @grid = build_grid(size)
@@ -16,6 +18,7 @@ class Board
       end
       puts
     end
+    puts "\n\n"
   end
 
   def [](row, col)

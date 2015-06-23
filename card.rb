@@ -8,9 +8,9 @@ class Card
 
   def to_s
     if hidden
-      "#"
+      "#".ljust(3)
     else
-      @value.to_s.ljust(4)
+      @value.to_s.ljust(3)
     end
   end
 
