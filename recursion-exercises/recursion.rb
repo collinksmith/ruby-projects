@@ -76,9 +76,7 @@ def binary_search(arr, target)
     else
       return idx + (n + 1)
     end
-
   end
-
 end
 
 def subsets(arr)
@@ -86,48 +84,4 @@ def subsets(arr)
 
   one_less = subsets(arr[0...-1])
   one_less + one_less.map {|s| s + [arr[-1]]}
-end
-
-
-def recombine(left, right)
-  arr = []
-  l, r = 0, 0
-
-  until l >= left.length && r >= right.length
-    if l >= left.length
-      if r < right.length #If right in bounds but not left
-        arr << right[r]
-        r += 1
-      end
-
-    else
-      if r < right.length #If both in bounds
-        if left[l] <= right[r]
-          arr << left[l]
-          l += 1
-        else
-          arr << right[r]
-          r += 1
-        end
-
-      else #If Left in bounds but not right
-        arr << left[l]
-        l += 1
-
-      end
-    end
-
-  end
-
-  arr
-end
-
-def merge_sort(arr)
-  return arr if arr.length < 2
-
-  n = arr.length / 2
-  left = arr.take(n)
-  right = arr.drop(n)
-
-  recombine(merge_sort(left), merge_sort(right))
 end
