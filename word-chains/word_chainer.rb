@@ -1,35 +1,65 @@
 require 'set'
 
 class WordChainer
-  DICT = Set.new(File.readlines('dictionary.txt').map(&:chomp))
+  attr_accessor :current_words
+  attr_reader :all_seen_words, :dict
 
-  def initialize(source)
+  def initialize(file_name = 'dictionary.txt')
+    @dict = Set.new(File.readlines(file_name).map(&:chomp))
+  end
+
+  def set_variables(source)
     @current_words = [source]
-    @all_seen_words = Set.new([source])
+    @all_seen_words = { source => nil }
   end
 
   def run(source, target)
-    until current_words.empty?
-      new_current_words = Set.new
-      current_words.each do |current_word|
-        adj_words = get_adjacent_words(current_word)
-        new_words = adj_words - all_seen_words
-        new_current_words.merge(new_words)
-        all_seen_words.merge(new_words)
+    set_variables(source)
+
+    until current_words.empty? || all_seen_words.include?(target)
+      new_current_words = []
+      explore_current_words(new_current_words)     
+    end
+
+    p build_path(target)
+  end
+
+  def explore_current_words(new_current_words)
+    current_words.each do |current_word|
+      adjacent_words(current_word).each do |adjacent_word|
+        next if all_seen_words.include?(adjacent_word)
+        new_current_words << adjacent_word
+        all_seen_words[adjacent_word] = current_word
       end
 
-    current_words = new_current_words
+      @current_words = new_current_words
     end
   end
 
-  def get_adjacent_words(word)
+  def build_path(target)
+    if all_seen_words[target].nil?
+      return "No valid path!"
+    end
+
+    path = []
+
+    next_word = target
+    until next_word == nil
+      path.unshift(next_word)
+      next_word = all_seen_words[next_word]
+    end
+
+    path
+  end
+
+  def adjacent_words(word)
     adjacent_words = Set.new
 
     (0...word.length).each do |i|
       ('a'..'z').each do |letter|
         test_word = word.dup
         test_word[i] = letter
-        if DICT.include?(test_word)
+        if dict.include?(test_word)
           adjacent_words << test_word
         end
       end
@@ -37,13 +67,9 @@ class WordChainer
 
     adjacent_words
   end
-
-  private
-
-  attr_accessor :current_words
-  attr_reader :all_seen_words, :dictionary
-
 end
 
-chainer = WordChainer.new('ruby')
-p chainer.get_adjacent_words('duck')
+if __FILE__ == $PROGRAM_NAME
+  chainer = WordChainer.new('market', 'farmer')
+  chainer.run
+end
