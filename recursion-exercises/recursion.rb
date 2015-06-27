@@ -2,7 +2,6 @@ def range(start_num, end_num)
   return [] if start_num > end_num
   range(start_num, (end_num-1)) << end_num
 end
-# p range(1,10)
 
 def sum_iterative(arr)
   arr.inject(:+)
@@ -13,7 +12,6 @@ def sum_recurs(arr)
 
   arr.first + sum_recurs(arr[1..-1])
 end
-# p sum_recurs([1,2,3,4,5])
 
 def exp1(b, pow)
   return 1 if pow == 0
@@ -57,6 +55,8 @@ def fib(n)
   arr << arr[-2] + arr[-1]
 end
 
+p fib(3)
+
 def binary_search(arr, target)
   return nil if arr.empty?
   n = arr.length / 2
@@ -84,4 +84,4 @@ def subsets(arr)
 
   one_less = subsets(arr[0...-1])
   one_less + one_less.map {|s| s + [arr[-1]]}
-end
+end   
