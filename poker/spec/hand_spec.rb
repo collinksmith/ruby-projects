@@ -1,7 +1,6 @@
 require 'hand'
 require 'rspec'
 
-
 describe Hand do
   let(:s2) { double('s2', :value => :two, :suit => :spades) }
   let(:s3) { double('s3', :value => :three, :suit => :spades) }
@@ -17,17 +16,18 @@ describe Hand do
   let(:sk) { double('sk', :value => :king, :suit => :spades) }
   let(:sa) { double('sa', :value => :ace, :suit => :spades) }
 
-  let(:h3) { double('h3' :value => :three, :suit => :hearts) }
-  let(:h7) { double('h7' :value => :seven, :suit => :hearts) }
-  let(:hq) { double('hq' :value => :queen, :suit => :hearts) }
+  let(:h3) { double('h3', :value => :three, :suit => :hearts) }
+  let(:h4) { double('h4', :value => :four, :suit => :hearts) }
+  let(:h7) { double('h7', :value => :seven, :suit => :hearts) }
+  let(:hq) { double('hq', :value => :queen, :suit => :hearts) }
 
-  let(:d4) { double('c3' :value => :four, :suit => :diamonds) }
-  let(:d7) { double('d7' :value => :seven, :suit => :diamonds) }
-  let(:dq) { double('dq' :value => :queen, :suit => :diamonds) }
-  let(:d10) { double('d10' :value => :ten, :suit => :diamonds) }
+  let(:d4) { double('c3', :value => :four, :suit => :diamonds) }
+  let(:d7) { double('d7', :value => :seven, :suit => :diamonds) }
+  let(:dq) { double('dq', :value => :queen, :suit => :diamonds) }
+  let(:d10) { double('d10', :value => :ten, :suit => :diamonds) }
 
-  let(:c7) { double('c7' :value => :seven, :suit => :clubs) }
-  let(:cq) { double('cq' :value => :queen, :suit => :clubs) }
+  let(:c7) { double('c7', :value => :seven, :suit => :clubs) }
+  let(:cq) { double('cq', :value => :queen, :suit => :clubs) }
 
   subject(:royal_flush_hand)     { Hand.new([s10, sj, sq, sk, sa]) }
   subject(:straight_flush_hand)  { Hand.new([s3, s4, s5, s6, s7]) }
@@ -40,7 +40,6 @@ describe Hand do
   subject(:one_pair_hand)        { Hand.new([d4, h4, s2, s3, s7]) }
   subject(:ace_high_hand)        { Hand.new([sa, h7, hq, s3, s5]) }
   subject(:garbage_hand)         { Hand.new([s2, s5, s4, d7, h3]) }
-
 
   describe "#initialize" do
     context "when no args are given" do
@@ -95,12 +94,12 @@ describe Hand do
       expect(straight_hand.straight?).to be true
     end
 
-    it "returns falsefor any other hand" do
+    it "returns false for any other hand" do
       expect(garbage_hand.straight?).to be false
     end
   end
 
-  describe "#flush?"
+  describe "#flush?" do
     it "returns true for a real flush" do
       expect(flush_hand.flush?).to be true
     end
@@ -116,7 +115,7 @@ describe Hand do
     end
 
     it "returns false for any other hand" do
-      expect(garbage_hand.three-of-a-kind?).to be false
+      expect(garbage_hand.three_of_a_kind?).to be false
     end
   end
 
@@ -140,21 +139,16 @@ describe Hand do
     end
   end
 
-
   describe "#beats?" do
     context "a straight flush" do
       it "beats four of a kind" do
         expect(straight_flush_hand.beats?(four_of_a_kind_hand)).to be true
-        #true?
-        # be true
-        # be_truthy
       end
 
       it "loses to a royal flush" do
         expect(straight_flush_hand.beats?(royal_flush_hand)).to be false
       end
     end
-
 
     context "four of a kind" do
       # subject(:four_of_a_kind_hand)  { Hand.new([s7, h7, d7, c7, s2]) }
@@ -169,7 +163,6 @@ describe Hand do
       end
     end
 
-
     context "a full house" do
       # subject(:full_house_hand)      { Hand.new([s7, h7, d7, sq, hq]) }
       subject(:queens_and_sevens_hand) { Hand.new([sq, hq, dq, c7, d7]) }
@@ -183,14 +176,13 @@ describe Hand do
       end
     end
 
-
     context "a flush" do
       # subject(:flush_hand)    { Hand.new([s2, s4, s7, s9, sj]) }
       subject(:jack_ten_flush)  { Hand.new([sj, s2, s4, s6, s10]) }
       subject(:ace_high_flush)  { Hand.new([sa, s2, s4, s7, s9]) }
 
       it "beats a straight" do
-        expect(flush_hand.beats?(straight_hand).to be true
+        expect(flush_hand.beats?(straight_hand)).to be true
       end
 
       it "loses to a better high card" do
@@ -202,7 +194,6 @@ describe Hand do
         expect(flush_hand.beats?(jack_ten_flush)).to be false
       end
     end
-
 
     context "a straight" do
       #subject(:straight_hand)    { Hand.new([s5, s6, h7, s8, s9]) }
@@ -217,7 +208,6 @@ describe Hand do
       end
     end
 
-
     context "three of a kind" do
       # subject(:three_of_a_kind_hand) { Hand.new([s7, h7, d7, hq, s3]) }
       subject(:three_queens_hand)      { Hand.new([sq, hq, dq, s2, s3]) }
@@ -231,7 +221,6 @@ describe Hand do
       end
     end
 
-
     context "two pair" do
       # subject(:two_pair_hand)      { Hand.new([s7, d7, sq, hq, s2]) }
       subject(:tens_and_queens_hand) { Hand.new([s10, sq, hq, d10, d4]) }
@@ -244,7 +233,6 @@ describe Hand do
         expect(two_pair_hand.beats?(tens_and_queens_hand)).to be false
       end
     end
-
 
     context "one pair" do
       # subject(:one_pair_hand)     { Hand.new([d4, h4, s2, s3, s7]) }
