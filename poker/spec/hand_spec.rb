@@ -56,46 +56,82 @@ describe Hand do
   end
 
   describe "#straight_flush?" do
-    context "for a real straight flush" do
-      it "returns true for five cards in a row of the same suit" do
-        expect(straight_flush_hand.straight_flush?).to be_true
-      end
+    it "returns true for a real straight flush" do
+      expect(straight_flush_hand.straight_flush?).to be_true
     end
 
-    context "for not a straight flush" do
-      it "returns false when not a straight flush" do
-        expect(garbage_hand.straight_flush?).to be_false
-      end
+    it "returns false for any other hand" do
+      expect(garbage_hand.straight_flush?).to be_false
     end
   end
 
   describe "#four_of_a_kind?" do
-    context "for a real four-of-a-kind" do
-      it "returns true for four cards of the same value" do
-        expect(four_of_a_kind_hand.four_of_a_kind?).to be_true
-      end
+    it "returns true for a real four-of-a-kind" do
+      expect(four_of_a_kind_hand.four_of_a_kind?).to be_true
     end
 
-    context "for any other hand" do
-
-      it "returns false when not four-of-a-kind" do
-        expect(garbage_hand.four_of_a_kind?).to be_false
-      end
+    it "returns false for any other hand" do
+      expect(garbage_hand.four_of_a_kind?).to be_false
     end
   end
 
   describe "#full_house?" do
-    context "for a real full house" do
-      it "returns true for three cards of one value and two cards of another" do
-        expect(full_house_hand.full_house?).to be_true
-      end
+    it "returns true for a real full house" do
+      expect(full_house_hand.full_house?).to be_true
     end
 
+    it "returns false for any other hand" do
+      expect(garbage_hand.full_house?).to be_false
+    end
+  end
 
-    context "for any other hand" do
-      it "returns false when not a full house" do
-        expect(garbage_hand.full_house?).to be_false
-      end
+  describe "#straight?" do
+    it "returns true for a real straight" do
+      expect(straight_hand.straight?).to be_true
+    end
+
+    it "returns falsefor any other hand" do
+      expect(garbage_hand.straight?).to be_false
+    end
+  end
+
+  describe "#flush?"
+    it "returns true for a real flush" do
+      expect(flush_hand.flush?).to be_true
+    end
+
+    it "returns false for any other hand" do
+      expect(garbage_hand.flush?).to be_false
+    end
+  end
+
+  describe "#three_of_a_kind?" do
+    it "returns true for a real three-of-a-kind" do
+      expect(three_of_a_kind_hand.three_of_a_kind?).to be_true
+    end
+
+    it "returns false for any other hand" do
+      expect(garbage_hand.three-of-a-kind?).to be_false
+    end
+  end
+
+  describe "#two_pair?" do
+    it "returns true for a real two pair" do
+      expect(two_pair_hand.two_pair?).to be_true
+    end
+
+    it "returns false for any other hand" do
+      expect(garbage_hand.two_pair?).to be_false
+    end
+  end
+
+  describe "#pair?" do
+    it "returns true for a real pair" do
+      expect(one_pair_hand.pair?).to be_true
+    end
+
+    it "returns false for any other hand" do
+      expect(garbage_hand.pair?).to be_false
     end
   end
 end
