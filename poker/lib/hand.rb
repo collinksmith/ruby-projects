@@ -1,8 +1,7 @@
 class Hand
   include Comparable
 
-  attr_reader :type
-  attr_accessor :cards
+  attr_accessor :cards, :type
 
   VALUE = {
     :ace => 14, :two => 2, :three => 3, :four  => 4,
@@ -76,6 +75,16 @@ class Hand
   end
 
   # ------------------------------
+
+  def remove_card(index)
+    cards.delete_at(index)
+    self.type = hand_type
+  end
+
+  def add_card(card)
+    cards << card
+    self.type = hand_type
+  end
 
   def beats?(other_hand)
     if self > other_hand

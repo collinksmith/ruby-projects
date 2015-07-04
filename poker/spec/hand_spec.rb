@@ -59,6 +59,29 @@ describe Hand do
     end
   end
 
+  describe "#remove_card" do
+    it "responds to the method" do
+      expect(ace_high_hand).to respond_to(:remove_card)
+    end
+
+    it "removes a card at the given index" do
+      ace_high_hand.remove_card(3)
+
+      expect(ace_high_hand.cards).not_to include s3
+    end
+  end
+
+  describe "#add_card" do
+    subject(:four_cards) { Hand.new([s4, d7, s8, s10]) }
+
+    it "adds the card given" do
+      four_cards.add_card(sq)
+
+      expect(four_cards.cards).to include sq
+      expect(four_cards.cards.size).to eq(5)
+    end
+  end
+
   describe "#straight_flush?" do
     it "returns true for a real straight flush" do
       expect(straight_flush_hand.straight_flush?).to be true

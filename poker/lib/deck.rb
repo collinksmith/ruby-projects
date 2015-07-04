@@ -12,6 +12,10 @@ class Deck
     create_deck
   end
 
+  def length
+    cards.length
+  end
+
   def create_deck
     SUITS.each do |suit|
       VALUES.each do |value|
