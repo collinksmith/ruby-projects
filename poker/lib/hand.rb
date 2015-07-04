@@ -1,4 +1,7 @@
 class Hand
+  include Comparable
+
+  attr_reader :type
   attr_accessor :cards
 
   VALUE = {
@@ -7,15 +10,17 @@ class Hand
     :nine  => 9, :ten   => 10, :jack  => 11, :queen => 12, :king  => 13
   }
 
-  PRECEDENCE = [ :straight_flush?, :four_of_a_kind?, :full_house?, :flush?,
-                 :straight?, :three_of_a_kind?, :two_pair?, :pair? ]
+  PRECEDENCE = [ :straight_flush, :four_of_a_kind, :full_house, :flush,
+                 :straight, :three_of_a_kind, :two_pair, :pair, :high_card,
+                 :partial ]
 
   def initialize(cards = [])
     @cards = cards
+    @type = self.hand_type
   end
 
   def values
-    cards.map { |card| VALUE[card.value] }
+    cards.map { |card| VALUE[card.value] }.sort.reverse
   end
 
   def suits
@@ -40,13 +45,46 @@ class Hand
   end
 
   def hand_type
-    
+    return :partial unless cards.size == 5
+
+    PRECEDENCE[0..-3].each do |kind|
+      return kind if self.send((kind.to_s + "?").to_sym)
+    end
+
+    :high_card
+  end
+
+  def <=>(other_hand)
+    # 1: self is better
+    # -1: other hand is better
+    # 0: hands are the same type, do more things
+    PRECEDENCE.index(other_hand.type) <=> PRECEDENCE.index(self.type)
+  end
+
+  def beats_same_type?(other_hand)
+    values.each_with_index do |value, index|
+      if value > other_hand.values[index]
+        return true
+      elsif value < other_hand.values[index]
+        return false
+      else
+        next
+      end
+    end
+
+    raise "It's a tie!!!!!"
   end
 
   # ------------------------------
 
   def beats?(other_hand)
-
+    if self > other_hand
+      return true
+    elsif self < other_hand
+      return false
+    else
+      beats_same_type?(other_hand)
+    end
   end
 
   def straight_flush?
