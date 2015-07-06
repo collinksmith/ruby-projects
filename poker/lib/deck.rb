@@ -27,4 +27,12 @@ class Deck
   def shuffle
     cards.shuffle!
   end
+
+  def take(n)
+    cards.shift(n)
+  end
+
+  def return(new_cards)
+    cards.concat(new_cards)
+  end
 end
