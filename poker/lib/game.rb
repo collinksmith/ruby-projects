@@ -1,3 +1,6 @@
+# TODO: Only allow people to call or raise if someone has already bet.
+#       Allow someone to call if someone previously bet more than they have in the bank.
+
 %w(card deck errors hand player).each { |file| require_relative file }
 
 class Game
