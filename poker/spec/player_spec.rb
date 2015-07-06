@@ -24,11 +24,12 @@ describe Player do
 
   describe "#bet" do
     it "subtracts the bet from the player's bank"
-
+      player.bet(10)
+      expect(player.bank).to eq(90)
     end
 
     it "raises an error if the player is too poor"
-
+      expect { player.bet(200) }.to raise_error("player can't cover bet")
     end
 
     it "won't place a zero bet"
@@ -36,44 +37,47 @@ describe Player do
     end
   end
 
-  describe "#check" do
-    it "returns true if the player checks"
+  # describe "#check" do
+  #   it "returns true if the player checks"
 
-    end
+  #   end
 
-    it "returns false if the player bets or folds"
+  #   it "returns false if the player bets or folds"
 
-    end
-  end
+  #   end
+  # end
 
-  describe "#call" do
-    it "subtracts the bet amount from the user's bank"
+  # describe "#call" do
+  #   it "subtracts the bet amount from the user's bank"
 
-    end
+  #   end
 
-    it "raises an error if the player is too poor"
+  #   it "raises an error if the player is too poor"
 
-    end
-  end
+  #   end
+  # end
 
-  describe "#raise" do
-    it "subtracts the bet plus the amount to raise from the bank"
+  # describe "#raise" do
+  #   it "subtracts the bet plus the amount to raise from the bank"
 
-    end
+  #   end
 
-    it "raises an error if the player is too poor"
+  #   it "raises an error if the player is too poor"
 
-    end
+  #   end
 
-  end
+  # end
 
   describe "#fold" do
     it "takes the player out of the betting order"
+      let(:game) { Game.new([player, moneybags])}
 
+      player.fold
+      expect(game.current_players).to eq([moneybags])
     end
 
-    it "doesn't let the player bet again until the next game begins"
-
-    end
+    # it "doesn't let the player bet again until the next game begins"
+      
+    # end
   end
 end
