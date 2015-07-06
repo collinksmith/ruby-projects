@@ -1,4 +1,4 @@
-Dir['./*'].each { |file| require_relative file }
+%w(card deck errors hand player).each { |file| require_relative file }
 
 class Game
   def initialize(players)
@@ -167,7 +167,6 @@ class Game
   attr_accessor :init_players, :pot
   attr_reader :deck, :current_bet, :dealer_pos, :players
 end
-
 
 p1 = Player.new("Bob")
 p2 = Player.new("Joe")
