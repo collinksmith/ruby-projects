@@ -16,4 +16,8 @@ class Card
     @value = value
     @suit = suit
   end
+
+  def to_s
+    "#{VALUE_STRINGS[value]}#{SUIT_STRINGS[suit]}"
+  end
 end
