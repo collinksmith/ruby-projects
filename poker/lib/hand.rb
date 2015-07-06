@@ -13,6 +13,10 @@ class Hand
                  :straight, :three_of_a_kind, :two_pair, :pair, :high_card,
                  :partial ]
 
+  def self.deal_from(deck)
+    Hand.new(deck.take(5))
+  end
+
   def initialize(cards = [])
     @cards = cards
     @type = self.hand_type
@@ -76,13 +80,31 @@ class Hand
 
   # ------------------------------
 
-  def remove_card(index)
-    cards.delete_at(index)
+  def to_s
+    card_strings = ''
+    cards.each { |card| card_strings << " #{card} "}
+    card_strings
+  end
+
+  def return_cards(indicies, deck)
+    new_cards = []
+    returned_cards = []
+    cards.each_with_index do |card, index| 
+      if indicies.include?(index)
+        returned_cards << card  
+      else
+        new_cards << card
+      end
+    end
+
+    deck.return(returned_cards)
+
+    self.cards = new_cards
     self.type = hand_type
   end
 
-  def add_card(card)
-    cards << card
+  def add_cards(new_cards)
+    cards.concat(new_cards)
     self.type = hand_type
   end
 
