@@ -66,6 +66,7 @@ class Board
           squares_array << square([3*row,3*col])
         end
       end
+      
       squares_array.map { |square| square.map(&:value) }
     end
 
