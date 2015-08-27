@@ -70,6 +70,6 @@ class WordChainer
 end
 
 if __FILE__ == $PROGRAM_NAME
-  chainer = WordChainer.new('market', 'farmer')
-  chainer.run
+  chainer = WordChainer.new()
+  chainer.run('market', 'farmer')
 end
