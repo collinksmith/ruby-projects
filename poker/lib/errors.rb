@@ -1,0 +1,2 @@
+class BetError < StandardError
+end
